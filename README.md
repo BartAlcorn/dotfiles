@@ -1,14 +1,14 @@
-# odt-team-dotfiles
+# dotfiles
 
-## a Set of common zsh aliases and functions for convenience and consistency
+Personal dotfiles for easier migration of dev step up.
 
-## Installtion
+## Installation
 
 In iTerm2:
 
 `cd $home`
 
-`git clone git@github.com:turnercode/odt-team-dotfiles.git`
+`git clone git@github.com:turnercode/BartAlcorn/dotfiles.git`
 
 In your .zshrc file, also located in your \$HOME directory, add the following:
 
