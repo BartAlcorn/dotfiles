@@ -16,5 +16,5 @@ fi
 
 echo "Updating and upgrading Homebrew..."
 echo
-yes | brew update &>/dev/null
-yes | brew upgrade &>/dev/null
+yes | brew update
+yes | brew upgrade
