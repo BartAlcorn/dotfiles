@@ -2,7 +2,14 @@
 # @author Bart Alcorn <bart.alcorn@gmail.com>
 # @repo github.com/bartalcorn/dotfiles
 
-echo "Starting... I should put an Insta-Prompt here."
+RED="\033[1;31m"
+GREEN="\033[1;32m"
+YELLOW="\033[1;33m"
+NOCOLOR="\033[0m"
+
+echo "Starting ZSH..."
+echo $YELLOW"I really should put an Insta-Prompt here."$NOCOLOR
+echo $GREEN">"$NOCOLOR
 
 # init zplug
 source ~/.zplug/init.zsh
