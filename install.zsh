@@ -1,11 +1,14 @@
 #!/usr/local/bin/zsh
+
+# installs zplug, this is mandatory. We have to do this before we update .zshrc or Bad Things™ happen.
+source $HOME/DotFiles/install_zplug.zsh
+
 # copy zshrc to user home dir
-echo "Set .zshrc to be symlink to zshrc.zsh here."
+echo "Set .zshrc to be symlinked to zshrc.zsh here."
 ln -s $HOME/DotFiles/zshrc.zsh $HOME/.zshrc
 
-# installs everything, comment out as appropriate.
-source install_zplug.zsh
-source install_xcode.zsh
-source install_python3.zsh
-source install_brew.zsh
-source install_nvm.zsh
+# installs everything else, comment out as appropriate.
+source $HOME/DotFiles/install_xcode.zsh
+source $HOME/DotFiles/install_python3.zsh
+source $HOME/DotFiles/install_brew.zsh
+source $HOME/DotFiles/install_nvm.zsh
