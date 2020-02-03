@@ -56,6 +56,9 @@ SPACESHIP_TERRAFORM_SHOW=true
 SPACESHIP_BATTERY_SHOW=always
 zplug "denysdovhan/spaceship-prompt", use:spaceship.zsh, from:github, as:theme
 
+# export STARSHIP_CONFIG=~/.config/starship.toml
+# eval "$(starship init zsh)"
+
 # Install plugins if there are plugins that have not been installed
 if ! zplug check --verbose; then
   printf "Install? [y/N]: "
@@ -146,3 +149,6 @@ source /Users/balcorn/.zplug/repos/b4b4r07/enhancd/init.sh
 
 echo ""
 mouse_battery
+
+echo -ne "Magic Number: "
+echo $FG[green]$FX[bold]$(go run ~/Downloads/magicnumber.go)

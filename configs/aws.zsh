@@ -4,3 +4,5 @@ export AWS_DEFAULT_REGION=us-east-1
 export ADFS_DOMAIN="Turner"
 export ADFS_URL="https://sts.turner.com/adfs/ls/IdpInitiatedSignOn.aspx?loginToRp=urn:amazon:webservices"
 # export AWS_PROFILE=$(docker run -v ~/.aws:/aws turnerlabs/samlkeygen select-profile $AWS_PROFILE)
+
+alias dynamo-local='docker run -p 8000:8000 amazon/dynamodb-local'
