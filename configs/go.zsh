@@ -14,8 +14,6 @@ export PATH="$HOME/Projects/GO/bin:$PATH"
 
 alias ~go='$GOPATH'
 alias ~gosrc='$GOPATH/src'
-alias ~golock='$GOPATH/src/github.com/turnercode/mss-sead-lockstep-go'
-alias ~gocomp='$GOPATH/src/github.com/turnercode/mss-sead-compass-jobs-go'
 
 function makego() {
   clear

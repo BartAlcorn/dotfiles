@@ -1,3 +1,8 @@
+#
+# Screen Capture Utils
+# Bart Alcorn
+#
+
 alias capc="screencapture -c"
 alias capic="screencapture -i -c"
 alias capiwc="screencapture -i -w -c"

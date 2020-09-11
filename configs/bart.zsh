@@ -19,7 +19,7 @@ alias clr='clear'
 
 # Folders Shortcuts
 alias dl='cd $HOME/Downloads'
-alias dt='cd $HOME/Desktop'
+alias dk='cd $HOME/Desktop'
 
 # Commands Shortcuts
 alias e='$EDITOR'
@@ -48,7 +48,7 @@ alias myip='dig +short myip.opendns.com @resolver1.opendns.com'
 
 # Password generator
 # Generate random password, copies it into clipboard and outputs it to terminal
-alias password='openssl rand -base64 ${1:-16e} | pbcopy ; echo `pbpaste`'
+alias password='openssl rand ${1:-16e} | pbcopy ; echo `pbpaste`'
 
 # Show $PATH in readable view
 alias path='echo -e ${PATH//:/\\n}'
