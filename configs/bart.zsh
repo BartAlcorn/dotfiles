@@ -73,3 +73,5 @@ alias updateSystem='sudo sh -c "softwareupdate -ia && reboot"'
 
 # open .sh files in code (VSCode)
 alias -s sh=code
+
+alias starwars='telnet towel.blinkenlights.nl'
