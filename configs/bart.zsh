@@ -57,7 +57,7 @@ alias path='echo -e ${PATH//:/\\n}'
 alias getpage='wget --no-clobber --page-requisites --html-extension --convert-links --no-host-directories'
 
 # Download file with original filename
-alias get='curl -O -L'
+alias fetch='curl -O -L'
 
 # Battery status
 alias battery="system_profiler SPPowerDataType"

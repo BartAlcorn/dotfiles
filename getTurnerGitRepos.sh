@@ -23,13 +23,14 @@ git clone git@github.com:turnercode/mss-sead-odt.git
 git clone git@github.com:turnercode/mss-sead-odt-iac.git
 git clone git@github.com:turnercode/odt-buildnumber.git
 git clone git@github.com:turnercode/odt-gateway.git
-git clone git@github.com:turnercode/odt-queue-watcher.git
-git clone git@github.com:turnercode/odt-titlessync.git
 git clone git@github.com:turnercode/odt-waverly.git
 git clone git@github.com:turnercode/odtbot.git
 git clone git@github.com:turnercode/checksamld.git
 
 cd ../TURNER
 git clone git@github.com:turnercode/sead-terraform-constants.git
+
+cd ..
+git clone git@github.com:turnercode/cp-metis.git
 
 cd Projects

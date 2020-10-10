@@ -14,6 +14,9 @@ export PATH="$HOME/Projects/GO/bin:$PATH"
 
 alias ~go='$GOPATH'
 alias ~gosrc='$GOPATH/src'
+alias grm='go run '
+alias grm='go run main.go'
+alias godoclocal='godoc -http :6000 & sleep 4 && open -a "Google Chrome" http://localhost:6000/pkg'
 
 function makego() {
   clear
@@ -32,6 +35,3 @@ function makego() {
     e.
   fi
 }
-
-alias grm='go run main.go'
-alias godoclocal='godoc -http :6000 & sleep 4 && open -a "Google Chrome" http://localhost:6000/pkg'

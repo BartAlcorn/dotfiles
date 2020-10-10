@@ -17,3 +17,6 @@ In your .zshrc file, also located in your \$HOME directory, add the following:
 `for config_file ($HOME/DotFiles/configs/*.zsh) source $config_file`
 
 All aliases and other goodies will be available on all **new** iTerm windows.
+
+### zsh plugins
+[awesome zsf](https://github.com/unixorn/awesome-zsh-plugins#plugins)

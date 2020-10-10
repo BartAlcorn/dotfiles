@@ -42,6 +42,7 @@ zplug "zsh-users/zsh-completions"
 zplug "zsh-users/zsh-syntax-highlighting", defer:2
 zplug "zsh-users/zsh-history-substring-search", defer:3
 zplug "zsh-users/zsh-apple-touchbar"
+zplug "zsh-users/zsh-history-substring-search"
 
 # zplug "b4b4r07/enhancd", use:init.sh  # not working see below
 zplug "laggardkernel/zsh-iterm2", use:init.zsh
@@ -140,6 +141,16 @@ zstyle ':completion:*:*:kill:*:processes' list-colors '=(#b) #([0-9]#) ([0-9a-z-
 
 # Other
 setopt prompt_subst
+
+# per directory configs
+function chpwd() {
+  if [ -r $PWD/.zsh_config.zsh ]; then
+    source $PWD/.zsh_config.zsh
+  # else
+  #   print "no .zsh_config.zsh found."
+  #   source $HOME/.zshrc
+  fi
+}
 
 # zplug and enhancd don't get along, even thought they are from the same author.
 source /Users/balcorn/.zplug/repos/b4b4r07/enhancd/init.sh

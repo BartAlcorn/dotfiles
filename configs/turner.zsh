@@ -14,8 +14,8 @@ alias ~ci='$HOME/Projects/COMPASS/mss-sead-compass-iac && echo -ne "\e]1;Compass
 alias ~cj='$HOME/Projects/COMPASS/mss-sead-compass-jobs && echo -ne "\e]1;Compass-Jobs\a"'
 alias ~cp='$HOME/Projects/COMPASS/mss-sead-compass-portal && echo -ne "\e]1;Compass-Portal\a"'
 
-alias ~ls='$HOME/Projects/LOCKSTEP/mss-sead-lockstep'
-alias ~lsi='$HOMEProjects/LOCKSTEP/mss-sead-lockstep-iac'
+# alias ~ls='$HOME/Projects/LOCKSTEP/mss-sead-lockstep'
+# alias ~lsi='$HOMEProjects/LOCKSTEP/mss-sead-lockstep-iac'
 
 alias ~tc='$HOME/Projects/GO/src/github.com/turnercode/ && oo && e. && echo -ne "\e]1;TurnerCode\a"'
 

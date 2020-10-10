@@ -20,8 +20,9 @@ alias awsprof='docker run --rm -v $HOME/.aws:/aws turnerlabs/samlkeygen select-p
 alias dynamo-local='docker run -p 8000:8000 amazon/dynamodb-local'
 alias awsrepologin='aws ecr get-login --no-include-email'
 
-alias aws_odt='AWS_PROFILE=aws-sead-ondemandtools:aws-sead-ondemandtools-devops'
-alias aws_odt_admin='AWS_PROFILE=aws-sead-ondemandtools:aws-sead-ondemandtools-admin'
+alias awsp_cp='AWS_PROFILE=aws-contentplatforms-prod:aws-contentplatforms-prod-devops'
+alias awsp_cmp='AWS_PROFILE=aws-cp-compass-prod:aws-cp-compass-prod-admin'
+alias awsp_odt='AWS_PROFILE=aws-sead-ondemandtools:aws-sead-ondemandtools-admin'
 
 function awsprofile() {
   if [ "$1" = "cmp" ]; then
