@@ -10,8 +10,6 @@
 alias editaliases='$EDITOR $HOME/DotFiles/configs'
 alias editzshrc='$EDITOR $HOME/DotFiles/zshrc.zsh'
 alias hidden='ls -a | grep "^\."'
-
-alias e.='$EDITOR .'
 alias grep='grep  --color=auto --exclude-dir={.bzr,CVS,.git,.hg,.svn}'
 
 # Because clear just wasn't short enough
@@ -23,6 +21,8 @@ alias dk='cd $HOME/Desktop'
 
 # Commands Shortcuts
 alias e='$EDITOR'
+alias e.='$EDITOR .'
+
 alias x+='chmod +x'
 
 # Open aliases

@@ -160,6 +160,3 @@ source /Users/balcorn/.zplug/repos/b4b4r07/enhancd/init.sh
 
 echo ""
 mouse_battery
-
-# echo -ne "Magic Number: "
-# echo $FG[green]$FX[bold]$(go run ~/Downloads/magicnumber.go)
