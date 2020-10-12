@@ -1,7 +1,7 @@
 #!/usr/local/bin/zsh
 
 # Abort on error
-set -e
+# set -e
 
 echo "Installing Python 3 through Homebrew..."
 echo

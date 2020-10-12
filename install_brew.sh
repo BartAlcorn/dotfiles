@@ -1,7 +1,7 @@
 #!/usr/local/bin/zsh
 
 # Abort on error
-set -e
+# set -e
 
 echo "Checking if Homebrew is already installed..."
 
@@ -19,6 +19,8 @@ echo
 yes | brew update
 yes | brew upgrade
 
+echo "Installing base packages..."
+echo
 brew install ansiweather
 brew install awscli
 brew install bazaar

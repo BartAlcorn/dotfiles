@@ -8,7 +8,7 @@ echo "Set .zshrc to be symlinked to zshrc.zsh here."
 ln -s $HOME/DotFiles/zshrc.zsh $HOME/.zshrc
 
 # installs everything else, comment out as appropriate.
-source $HOME/DotFiles/install_xcode.zsh
-source $HOME/DotFiles/install_python3.zsh
-source $HOME/DotFiles/install_brew.zsh
-source $HOME/DotFiles/install_nvm.zsh
+source $HOME/DotFiles/install_xcode.sh
+source $HOME/DotFiles/install_python3.sh
+source $HOME/DotFiles/install_brew.sh
+source $HOME/DotFiles/install_nvm.sh

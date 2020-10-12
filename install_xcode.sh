@@ -1,7 +1,7 @@
 #!/usr/local/bin/zsh
 
 # Abort on error
-set -e
+# set -e
 
 echo "Checking if Xcode Command Line tools are installed..."
 
