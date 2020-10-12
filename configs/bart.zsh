@@ -8,8 +8,8 @@
 
 # Bart conveniences
 alias editaliases='$EDITOR $HOME/DotFiles/configs'
+alias editzsh='$EDITOR $HOME/DotFiles/'
 alias editzshrc='$EDITOR $HOME/DotFiles/zshrc.zsh'
-alias hidden='ls -a | grep "^\."'
 alias grep='grep  --color=auto --exclude-dir={.bzr,CVS,.git,.hg,.svn}'
 
 # Because clear just wasn't short enough
@@ -18,11 +18,11 @@ alias clr='clear'
 # Folders Shortcuts
 alias dl='cd $HOME/Downloads'
 alias dk='cd $HOME/Desktop'
+alias dt='cd $HOME/DotFiles'
 
 # Commands Shortcuts
 alias e='$EDITOR'
 alias e.='$EDITOR .'
-
 alias x+='chmod +x'
 
 # Open aliases
@@ -30,6 +30,7 @@ alias o='open'
 alias oo='open .'
 
 # *nix List command aliases
+alias hidden='ls -a | grep "^\."'
 alias ls='ls -Gl'
 alias ll='ls -alF'
 alias la='ls -Al'
@@ -48,7 +49,7 @@ alias myip='dig +short myip.opendns.com @resolver1.opendns.com'
 
 # Password generator
 # Generate random password, copies it into clipboard and outputs it to terminal
-alias password='openssl rand ${1:-16e} | pbcopy ; echo `pbpaste`'
+alias password='openssl rand -base64 32'
 
 # Show $PATH in readable view
 alias path='echo -e ${PATH//:/\\n}'

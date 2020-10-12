@@ -3,7 +3,7 @@
 # installs zplug, this is mandatory. We have to do this before we update .zshrc or Bad Things™ happen.
 source $HOME/DotFiles/install_zplug.zsh
 
-# copy zshrc to user home dir
+# symlink this folder's zshrc to the user home dir
 echo "Set .zshrc to be symlinked to zshrc.zsh here."
 ln -s $HOME/DotFiles/zshrc.zsh $HOME/.zshrc
 

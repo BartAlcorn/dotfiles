@@ -10,13 +10,13 @@ In iTerm2:
 
 `git clone git@github.com:turnercode/BartAlcorn/dotfiles.git`
 
-In your .zshrc file, also located in your \$HOME directory, add the following:
+`cd dotfiles`
 
-`# Load zsh config and extra files`
+`source ./install.zsh`
 
-`for config_file ($HOME/DotFiles/configs/*.zsh) source $config_file`
+when complete, `exit` and open new iTerm window.
 
-All aliases and other goodies will be available on all **new** iTerm windows.
+All aliases, functions, helpers, and other goodies will be available on all **new** iTerm windows.
 
 ### zsh plugins
 [awesome zsf](https://github.com/unixorn/awesome-zsh-plugins#plugins)
