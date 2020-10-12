@@ -19,4 +19,5 @@ when complete, `exit` and open new iTerm window.
 All aliases, functions, helpers, and other goodies will be available on all **new** iTerm windows.
 
 ### zsh plugins
+
 [awesome zsf](https://github.com/unixorn/awesome-zsh-plugins#plugins)
