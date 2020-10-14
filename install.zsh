@@ -7,6 +7,7 @@ source $HOME/DotFiles/install_zplug.zsh
 FILE=$HOME/.zshrc
 if [[ -f "$FILE" ]]; then
   mv $FILE "${FILE}_backup"
+  echo ".zshrc was backed up in home dir"
 fi
 
 # symlink this folder's zshrc to the user home dir
