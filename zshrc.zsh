@@ -108,7 +108,6 @@ clear
 # echo "Bartman" | figlet -f big
 echo -ne $FG[yellow]$FX[bold]"\n\nOnDemand Fools\n\n"
 echo $FG[red]$FX[bold]"WHY be consistent?!?"
-# echo -ne $FG[yellow]$FX[bold]"\n\nB/c I’m still cool regardless!! -"$FG[cyan]" Cea\n\n"$FG[none]
 
 # zsh options
 HISTSIZE=50000
