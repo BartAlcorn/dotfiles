@@ -3,6 +3,13 @@
 # installs zplug, this is mandatory. We have to do this before we update .zshrc or Bad Things™ happen.
 source $HOME/DotFiles/install_zplug.zsh
 
+# backup zshrc, if exists
+FILE=$HOME/.zshrc
+if [[ -f "$FILE" ]]; then
+  mv $FILE "${FILE}_backup"
+  echo ".zshrc was backed up in home dir"
+fi
+
 # symlink this folder's zshrc to the user home dir
 echo "Set .zshrc to be symlinked to zshrc.zsh here."
 ln -s $HOME/DotFiles/zshrc.zsh $HOME/.zshrc

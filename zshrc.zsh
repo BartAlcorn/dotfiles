@@ -44,7 +44,7 @@ zplug "zsh-users/zsh-history-substring-search", defer:3
 zplug "zsh-users/zsh-apple-touchbar"
 zplug "zsh-users/zsh-history-substring-search"
 
-# zplug "b4b4r07/enhancd", use:init.sh  # not working see below
+zplug "b4b4r07/enhancd", use:init.sh
 zplug "laggardkernel/zsh-iterm2", use:init.zsh
 zplug "gimbo/iterm2-tabs.zsh", use:iterm2-tabs.zsh
 zplug "djui/alias-tips", use:alias-tips.plugin.zsh
@@ -96,19 +96,19 @@ export PATH="$PATH"
 # Serverless
 # tabtab source for serverless package
 # uninstall by removing these lines or running `tabtab uninstall serverless`
-[[ -f /Users/aawhite/.nvm/versions/node/v10.13.0/lib/node_modules/serverless/node_modules/tabtab/.completions/serverless.zsh ]] && . /Users/aawhite/.nvm/versions/node/v10.13.0/lib/node_modules/serverless/node_modules/tabtab/.completions/serverless.zsh
+[[ -f $HOME/.nvm/versions/node/v10.13.0/lib/node_modules/serverless/node_modules/tabtab/.completions/serverless.zsh ]] && . $HOME/.nvm/versions/node/v10.13.0/lib/node_modules/serverless/node_modules/tabtab/.completions/serverless.zsh
 # tabtab source for sls package
 # uninstall by removing these lines or running `tabtab uninstall sls`
-[[ -f /Users/aawhite/.nvm/versions/node/v10.13.0/lib/node_modules/serverless/node_modules/tabtab/.completions/sls.zsh ]] && . /Users/aawhite/.nvm/versions/node/v10.13.0/lib/node_modules/serverless/node_modules/tabtab/.completions/sls.zsh
+[[ -f $HOME/.nvm/versions/node/v10.13.0/lib/node_modules/serverless/node_modules/tabtab/.completions/sls.zsh ]] && . $HOME/.nvm/versions/node/v10.13.0/lib/node_modules/serverless/node_modules/tabtab/.completions/sls.zsh
 # tabtab source for slss package
 # uninstall by removing these lines or running `tabtab uninstall slss`
-[[ -f /Users/aawhite/.nvm/versions/node/v10.13.0/lib/node_modules/serverless/node_modules/tabtab/.completions/slss.zsh ]] && . /Users/aawhite/.nvm/versions/node/v10.13.0/lib/node_modules/serverless/node_modules/tabtab/.completions/slss.zsh
+[[ -f $HOME/.nvm/versions/node/v10.13.0/lib/node_modules/serverless/node_modules/tabtab/.completions/slss.zsh ]] && . $HOME/.nvm/versions/node/v10.13.0/lib/node_modules/serverless/node_modules/tabtab/.completions/slss.zsh
+
 
 clear
 # echo "Bartman" | figlet -f big
 echo -ne $FG[yellow]$FX[bold]"\n\nOnDemand Fools\n\n"
 echo $FG[red]$FX[bold]"WHY be consistent?!?"
-# echo -ne $FG[yellow]$FX[bold]"\n\nB/c I’m still cool regardless!! -"$FG[cyan]" Cea\n\n"$FG[none]
 
 # zsh options
 HISTSIZE=50000
@@ -151,9 +151,6 @@ function chpwd() {
   #   source $HOME/.zshrc
   fi
 }
-
-# zplug and enhancd don't get along, even thought they are from the same author.
-# source /Users/aawhite/.zplug/repos/b4b4r07/enhancd/init.sh
 
 # fuzzy
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
