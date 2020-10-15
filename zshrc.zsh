@@ -96,13 +96,13 @@ export PATH="$PATH"
 # Serverless
 # tabtab source for serverless package
 # uninstall by removing these lines or running `tabtab uninstall serverless`
-[[ -f /Users/balcorn/.nvm/versions/node/v10.13.0/lib/node_modules/serverless/node_modules/tabtab/.completions/serverless.zsh ]] && . /Users/balcorn/.nvm/versions/node/v10.13.0/lib/node_modules/serverless/node_modules/tabtab/.completions/serverless.zsh
+[[ -f /Users/aawhite/.nvm/versions/node/v10.13.0/lib/node_modules/serverless/node_modules/tabtab/.completions/serverless.zsh ]] && . /Users/aawhite/.nvm/versions/node/v10.13.0/lib/node_modules/serverless/node_modules/tabtab/.completions/serverless.zsh
 # tabtab source for sls package
 # uninstall by removing these lines or running `tabtab uninstall sls`
-[[ -f /Users/balcorn/.nvm/versions/node/v10.13.0/lib/node_modules/serverless/node_modules/tabtab/.completions/sls.zsh ]] && . /Users/balcorn/.nvm/versions/node/v10.13.0/lib/node_modules/serverless/node_modules/tabtab/.completions/sls.zsh
+[[ -f /Users/aawhite/.nvm/versions/node/v10.13.0/lib/node_modules/serverless/node_modules/tabtab/.completions/sls.zsh ]] && . /Users/aawhite/.nvm/versions/node/v10.13.0/lib/node_modules/serverless/node_modules/tabtab/.completions/sls.zsh
 # tabtab source for slss package
 # uninstall by removing these lines or running `tabtab uninstall slss`
-[[ -f /Users/balcorn/.nvm/versions/node/v10.13.0/lib/node_modules/serverless/node_modules/tabtab/.completions/slss.zsh ]] && . /Users/balcorn/.nvm/versions/node/v10.13.0/lib/node_modules/serverless/node_modules/tabtab/.completions/slss.zsh
+[[ -f /Users/aawhite/.nvm/versions/node/v10.13.0/lib/node_modules/serverless/node_modules/tabtab/.completions/slss.zsh ]] && . /Users/aawhite/.nvm/versions/node/v10.13.0/lib/node_modules/serverless/node_modules/tabtab/.completions/slss.zsh
 
 clear
 # echo "Bartman" | figlet -f big
@@ -153,7 +153,7 @@ function chpwd() {
 }
 
 # zplug and enhancd don't get along, even thought they are from the same author.
-source /Users/balcorn/.zplug/repos/b4b4r07/enhancd/init.sh
+# source /Users/aawhite/.zplug/repos/b4b4r07/enhancd/init.sh
 
 # fuzzy
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
