@@ -101,34 +101,43 @@ echo $FG[red]$FX[bold]"WHY be consistent?!?"
 HISTFILE=~/.zsh_history         # where to store zsh config
 HISTSIZE=50000
 SAVEHIST=10000
-setopt extended_history
-setopt hist_expire_dups_first
-setopt hist_ignore_all_dups     # no duplicate
-setopt hist_ignore_space
-setopt inc_append_history
-setopt share_history
+setopt BANG_HIST                 # Treat the '!' character specially during expansion.
+setopt EXTENDED_HISTORY          # Write the history file in the ':start:elapsed;command' format.
+setopt SHARE_HISTORY             # Share history between all sessions.
+setopt HIST_EXPIRE_DUPS_FIRST    # Expire a duplicate event first when trimming history.
+setopt HIST_IGNORE_DUPS          # Do not record an event that was just recorded again.
+setopt HIST_IGNORE_ALL_DUPS      # Delete an old recorded event if a new event is a duplicate.
+setopt HIST_FIND_NO_DUPS         # Do not display a previously found event.
+setopt HIST_IGNORE_SPACE         # Do not record an event starting with a space.
+setopt HIST_SAVE_NO_DUPS         # Do not write a duplicate event to the history file.
+setopt HIST_VERIFY               # Do not execute immediately upon history expansion.
+setopt HIST_BEEP                 # Beep when accessing non-existent history.
 
 # Changing directories
-setopt auto_cd
-setopt auto_pushd
-unsetopt pushd_ignore_dups
-setopt pushdminus
+setopt AUTO_CD
+setopt AUTO_PUSHD
+unsetopt PUSHD_IGNORE_DUPS
+setopt PUSHDMINUS
 
 # Completion
-setopt auto_menu
-setopt always_to_end
-setopt complete_in_word
-unsetopt flow_control
-unsetopt menu_complete
+setopt AUTO_MENU
+setopt ALWAYS_TO_END
+setopt COMPLETE_IN_WORD
+unsetopt FLOW_CONTROL
+unsetopt MENU_COMPLETE
+
+# Enable completion caching
+zstyle ':completion:*' use-cache on
+zstyle ':completion:*' cache-path ~/.zsh/cache
 zstyle ':completion:*:*:*:*:*' menu select
-zstyle ':completion:*' matcher-list 'm:{a-zA-Z-_}={A-Za-z_-}' 'r:|=*' 'l:|=* r:|=*'
-zstyle ':completion::complete:*' use-cache 1
-zstyle ':completion::complete:*' cache-path
-zstyle ':completion:*' list-colors ''
+# zstyle ':completion:*' matcher-list 'm:{a-zA-Z-_}={A-Za-z_-}' 'r:|=*' 'l:|=* r:|=*'
+# zstyle ':completion::complete:*' use-cache 1
+# zstyle ':completion::complete:*' cache-path
+# zstyle ':completion:*' list-colors ''
 zstyle ':completion:*:*:kill:*:processes' list-colors '=(#b) #([0-9]#) ([0-9a-z-]#)*=01;34=0=01'
 
 # Other
-setopt prompt_subst
+setopt PROMPT_SUBST
 
 # per directory configs
 function chpwd() {
