@@ -7,47 +7,59 @@ GREEN="\033[1;32m"
 YELLOW="\033[1;33m"
 NOCOLOR="\033[0m"
 
-echo "Starting ZSH..."
-echo $YELLOW"I really should put an Insta-Prompt here."$NOCOLOR
-echo $GREEN">"$NOCOLOR
+echo $GREEN"Starting ZSH..."$NOCOLOR
+# echo $YELLOW"I really should put an Insta-Prompt here."$NOCOLOR
+# echo $GREEN">"$NOCOLOR
 
-# init zplug
-source ~/.zplug/init.zsh
-
-# zplug check returns true if all packages are installed
-# Therefore, when it returns false, run zplug install
-if ! zplug check; then
-  zplug install
+### Added by Zinit's installer
+if [[ ! -f $HOME/.zinit/bin/zinit.zsh ]]; then
+  print -P "%F{33}▓▒░ %F{220}Installing %F{33}DHARMA%F{220} Initiative Plugin Manager (%F{33}zdharma/zinit%F{220})…%f"
+  command mkdir -p "$HOME/.zinit" && command chmod g-rwX "$HOME/.zinit"
+  command git clone https://github.com/zdharma/zinit "$HOME/.zinit/bin" &&
+    print -P "%F{33}▓▒░ %F{34}Installation successful.%f%b" ||
+    print -P "%F{160}▓▒░ The clone has failed.%f%b"
 fi
 
-# Init zplug
-export ZPLUG_HOME=~/.zplug #  manually installed zplug
-source $ZPLUG_HOME/init.zsh
+source "$HOME/.zinit/bin/zinit.zsh"
+autoload -Uz _zinit
+(( ${+_comps} )) && _comps[zinit]=_zinit
 
-zplug "modules/environment", from:prezto, defer:0
-zplug "modules/bundler", from:prezto
-# zplug "modules/directory", from:prezto
-zplug "modules/editor", from:prezto
-zplug "modules/git", from:prezto
-zplug "modules/history", from:prezto
-zplug "modules/spectrum", from:prezto
-# zplug "modules/homebrew", from:prezto
-zplug "modules/osx", from:prezto
-zplug "modules/terminal", from:prezto
-zplug "modules/utility", from:prezto
+### End of Zinit's installer chunk
 
-# oh-my-zsh Plugin
-zplug "zsh-users/zsh-autosuggestions"
-zplug "zsh-users/zsh-completions"
-zplug "zsh-users/zsh-syntax-highlighting", defer:2
-zplug "zsh-users/zsh-history-substring-search", defer:3
-zplug "zsh-users/zsh-apple-touchbar"
-zplug "zsh-users/zsh-history-substring-search"
+zinit light zinit-zsh/z-a-as-monitor
+zinit light zsh-users/zsh-autosuggestions
+zinit light zdharma/fast-syntax-highlighting
+zinit light zdharma/history-search-multi-word
+zinit light zsh-users/zsh-history-substring-search
+zinit light zsh-users/zsh-apple-touchbar
+zinit light knu/zsh-manydots-magic
+zinit light ogham/exa
 
-zplug "b4b4r07/enhancd", use:init.sh # not working see below
-zplug "laggardkernel/zsh-iterm2", use:init.zsh
-zplug "gimbo/iterm2-tabs.zsh", use:iterm2-tabs.zsh
-zplug "djui/alias-tips", use:alias-tips.plugin.zsh
+zinit snippet OMZ::plugins/history/history.plugin.zsh
+zinit snippet OMZ::lib/completion.zsh
+zinit snippet OMZ::plugins/git/git.plugin.zsh
+zinit snippet OMZ::plugins/ssh-agent/ssh-agent.plugin.zsh
+
+zinit wait lucid for \
+    ulwlu/enhancd
+
+zinit for \
+  djui/alias-tips \
+  laggardkernel/zsh-iterm2 \
+  PZT::modules/osx \
+  PZT::modules/terminal \
+  PZT::modules/utility
+
+  # Some Prezto modules to improve misc stuff
+zinit ice svn wait lucid
+zinit snippet PZT::modules/helper
+zinit ice svn wait lucid
+zinit snippet PZT::modules/directory
+zinit ice svn wait lucid
+zinit snippet PZT::modules/completion
+
+zinit ice wait lucid
+zinit snippet OMZ::plugins/golang/golang.plugin.zsh
 
 # SpaceShip-Prompt Settings
 SPACESHIP_TIME_SHOW=true
@@ -55,66 +67,43 @@ SPACESHIP_AWS_SHOW=false
 SPACESHIP_GOLANG_SHOW=true
 SPACESHIP_TERRAFORM_SHOW=true
 SPACESHIP_BATTERY_SHOW=always
-zplug "denysdovhan/spaceship-prompt", use:spaceship.zsh, from:github, as:theme
+zinit light denysdovhan/spaceship-prompt
 
-# export STARSHIP_CONFIG=~/.config/starship.toml
-# eval "$(starship init zsh)"
+zinit load chrissicool/zsh-256color
 
-# Install plugins if there are plugins that have not been installed
-if ! zplug check --verbose; then
-  printf "Install? [y/N]: "
-  if read -q; then
-    echo
-    zplug install
-  fi
-fi
+# Plugins
+zinit ice depth=1 lucid
+zinit light trystan2k/zsh-tab-title
 
-# Load zplug
-zplug load # --verbose
+zinit ice depth=1 wait lucid atinit"ZINIT[COMPINIT_OPTS]=-C; zpcompinit; zpcdreplay"
+zinit light zdharma/fast-syntax-highlighting
 
-# == End Zplug ==
+zinit ice depth=1 wait"2" lucid
+zinit light hlissner/zsh-autopair
+
+zinit ice depth=1 wait lucid
+zinit light Aloxaf/fzf-tab
 
 # Load zsh configs and extra files
 for config_file in $HOME/DotFiles/configs/*.zsh; do source $config_file; done
 
-# Node Version Manager
-export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"                   # This loads nvm
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion" # This loads nvm bash_completion
-
 export EDITOR='code'
-
-# Turner specific Environment Variable
 export COMPASS_ENV=local
 export NODE_ENV=development
 export BABEL_ENV=$NODE_ENV
-# export CIRCLE_TOKEN=4558c291d0a547b6f8fc7b38df04e55a9e5e392e
-
-# Path
 export PATH="$PATH"
 
-# Serverless
-# tabtab source for serverless package
-# uninstall by removing these lines or running `tabtab uninstall serverless`
-[[ -f $HOME/.nvm/versions/node/v10.13.0/lib/node_modules/serverless/node_modules/tabtab/.completions/serverless.zsh ]] && . $HOME/.nvm/versions/node/v10.13.0/lib/node_modules/serverless/node_modules/tabtab/.completions/serverless.zsh
-# tabtab source for sls package
-# uninstall by removing these lines or running `tabtab uninstall sls`
-[[ -f $HOME/.nvm/versions/node/v10.13.0/lib/node_modules/serverless/node_modules/tabtab/.completions/sls.zsh ]] && . $HOME/.nvm/versions/node/v10.13.0/lib/node_modules/serverless/node_modules/tabtab/.completions/sls.zsh
-# tabtab source for slss package
-# uninstall by removing these lines or running `tabtab uninstall slss`
-[[ -f $HOME/.nvm/versions/node/v10.13.0/lib/node_modules/serverless/node_modules/tabtab/.completions/slss.zsh ]] && . $HOME/.nvm/versions/node/v10.13.0/lib/node_modules/serverless/node_modules/tabtab/.completions/slss.zsh
-
-clear
 # echo "Bartman" | figlet -f big
-echo -ne $FG[yellow]$FX[bold]"\n\nOnDemand Fools\n\n"
+echo -ne $FG[yellow]$FX[bold]"OnDemand Fools\n"
 echo $FG[red]$FX[bold]"WHY be consistent?!?"
 
 # zsh options
+HISTFILE=~/.zsh_history         # where to store zsh config
 HISTSIZE=50000
 SAVEHIST=10000
 setopt extended_history
 setopt hist_expire_dups_first
-setopt hist_ignore_dups
+setopt hist_ignore_all_dups     # no duplicate
 setopt hist_ignore_space
 setopt inc_append_history
 setopt share_history
@@ -150,9 +139,6 @@ function chpwd() {
   #   source $HOME/.zshrc
   fi
 }
-
-# fuzzy
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
 echo ""
 mouse_battery

@@ -6,7 +6,7 @@
 function reloadZsh() {
   clear
   . $HOME/.zshrc
-  echo $FG[cyan]$FX[bold]'ZSH config reloaded from $HOME/.zshrc'$FX[none]
+  echo $FG[yellow]$FX[bold]'ZSH config reloaded from $HOME/.zshrc'$FX[none]
 }
 
 # display who is using a given port (eg 80 or 5858)

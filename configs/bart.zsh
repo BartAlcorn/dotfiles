@@ -31,10 +31,11 @@ alias oo='open .'
 
 # *nix List command aliases
 alias hidden='ls -a | grep "^\."'
-alias ls='ls -Gl'
-alias ll='ls -alF'
-alias la='ls -Al'
-alias l='ls -CF'
+#####  see exa.zsh
+# alias ls='ls -Gl'
+# alias ll='ls -alF'
+# alias la='ls -Al'
+# alias l='ls -CF'
 
 # Clipboard tools
 alias xcopy='xclip -selection clipboard'

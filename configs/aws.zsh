@@ -24,6 +24,8 @@ alias awsp_cp='AWS_PROFILE=aws-contentplatforms-prod:aws-contentplatforms-prod-d
 alias awsp_cmp='AWS_PROFILE=aws-cp-compass-prod:aws-cp-compass-prod-admin'
 alias awsp_odt='AWS_PROFILE=aws-sead-ondemandtools:aws-sead-ondemandtools-admin'
 
+alias gimme-creds="docker run -it --rm -v ~/.aws/credentials:/root/.aws/credentials -v ~/.okta_aws_login_config:/root/.okta_aws_login_config gimme-aws-creds:latest"
+
 function awsprofile() {
   if [ "$1" = "cmp" ]; then
     export AWS_PROFILE=aws-cp-compass-prod:aws-cp-compass-prod-admin

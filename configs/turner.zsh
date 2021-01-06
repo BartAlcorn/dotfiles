@@ -14,12 +14,10 @@ alias ~ci='$HOME/Projects/COMPASS/mss-sead-compass-iac && echo -ne "\e]1;Compass
 alias ~cj='$HOME/Projects/COMPASS/mss-sead-compass-jobs && echo -ne "\e]1;Compass-Jobs\a"'
 alias ~cp='$HOME/Projects/COMPASS/mss-sead-compass-portal && echo -ne "\e]1;Compass-Portal\a"'
 
-# alias ~ls='$HOME/Projects/LOCKSTEP/mss-sead-lockstep'
-# alias ~lsi='$HOMEProjects/LOCKSTEP/mss-sead-lockstep-iac'
-
 alias ~tc='$HOME/Projects/GO/src/github.com/turnercode/ && oo && e. && echo -ne "\e]1;TurnerCode\a"'
 
-alias ~metis='$HOME/Projects/GO/src/github.com/turnercode/metis && oo && e. && echo -ne "\e]1;metis\a"'
+alias ~arcys='$HOME/Projects/GO/src/github.com/turnercode/arcys && oo && e. && echo -ne "\e]1;arcys\a"'
+alias ~zephyr='$HOME/Projects/GO/src/github.com/turnercode/zephyr && oo && e. && echo -ne "\e]1;zephyr\a"'
 alias ~cmgo='$HOME/Projects/GO/src/github.com/turnercode/odt-common-go && oo && e. && echo -ne "\e]1;ODT-Common-GO\a"'
 alias ~cpgo='$HOME/Projects/GO/src/github.com/turnercode/odt-compass-go && oo && e. && echo -ne "\e]1;ODT-Compass-GO\a"'
 alias ~lsgo='$HOME/Projects/GO/src/github.com/turnercode/odt-lockstep-go && oo && e. && echo -ne "\e]1;ODT-LockStep-GO\a"'
@@ -54,66 +52,4 @@ function cstoreupgrade() {
 
 function parse_git_branch_name() {
   export GITBRANCHNAME=$(git branch 2>/dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/\1/')
-}
-
-# Change Directory Compass IaC
-# $1 = project ( e.g. api, jobs, portal)
-# $2 = environment ( e.g. dev, qa, staging, prod)
-function cdci() {
-  # cd $HOME/Projects/COMPASS/mss-sead-compass-iac/$1/env/$2
-  if [ "$2" = "prod" ]; then
-    cd $HOME/Projects/COMPASS/mss-sead-compass-iac-prod/$1/prod
-  else
-    cd $HOME/Projects/COMPASS/mss-sead-compass-iac/$1/env/$2
-  fi
-}
-
-# Change Directory OnDemand Tools IaC
-# $1 = project ( e.g. api, jobs, portal)
-# $2 = environment ( e.g. dev, qa, staging, prod)
-function cdoi() {
-  # cd $HOME/Projects/ODT/mss-sead-odt-iac/$1/env/$2
-  if [ "$2" = "prod" ]; then
-    cd $HOME/Projects/ODT/mss-sead-odt-iac-prod/$1/prod
-  else
-    cd $HOME/Projects/ODT/mss-sead-odt-iac/nonprod/$1/env/$2
-  fi
-}
-
-# Fargate Compass NONPROD deployers
-# $1 = projects ( e.g. api, jobs, portal )
-# $2 = environment ( e.g. dev, stating, qa)
-# $3 = build number
-function deploy_Compass() {
-  AWS_PROFILE=aws-sead-ondemandtools:aws-sead-ondemandtools-admin
-  # cd $HOME/Projects/COMPASS/mss-sead-compass-iac/$1/env/$2
-  # echo 'deploying '$1' image tag '$FG[yellow]$FX[bold]$3$FX[none]' to '$FG[yellow]$FX[bold]$2$FX[none]
-  fargate service deploy -c compassdashboard-$1-$2 -s compassdashboard-$1-$2 -i 837769064668.dkr.ecr.us-east-1.amazonaws.com/compassdashboard-$1:$3
-  # cd -
-}
-
-# Fargate ODT NONPROD deployers
-# $1 = projects ( e.g. api, jobs, portal )
-# $2 = environment ( e.g. dev, stating, qa)
-# $3 = build number
-function deploy_ODT() {
-  AWS_PROFILE=aws-sead-ondemandtools:aws-sead-ondemandtools-admin
-  # cd $HOME/Projects/ODT/mss-sead-odt-iac/$1/env/$2
-  fargate service deploy -c ondemandtools-$1-$2 -s ondemandtools-$1-$2 -i 837769064668.dkr.ecr.us-east-1.amazonaws.com/ondemandtools-$1:2.3.1.$3
-  # cd -
-}
-
-# Start Compass Development Express Server
-function ws() {
-  clear
-  echo $FG[white]"running WebServer: "$FG[cyan]$FX[bold]"\nnodemon ./src/app.js"$FX[none]
-  export COMPASS_ENV=local
-  nodemon ./src/app.js
-}
-
-# Start Compass Webpack-Dev-Server
-function ds() {
-  clear
-  echo $FG[white]"running DevWebServer: "$FG[yellow]$FX[bold]"\nwebpack-dev-server --colors --config config/webpack.config.dev.js\n"$FX[none]
-  webpack-dev-server --colors --config config/webpack.config.dev.js
 }
