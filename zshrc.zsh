@@ -94,6 +94,7 @@ export BABEL_ENV=$NODE_ENV
 export PATH="$PATH"
 
 # echo "Bartman" | figlet -f big
+echo -ne $FG[cyan]$FX[bold]"\nD"$FX[none]"igital "$FG[cyan]$FX[bold]"A"$FX[none]"sset "$FG[cyan]$FX[bold]"W"$FX[none]"orkflow "$FG[cyan]$FX[bold]"G"$FX[none]"roup"$FG[cyan]", Go DAWGs\n"
 echo -ne $FG[yellow]$FX[bold]"OnDemand Fools\n"
 echo $FG[red]$FX[bold]"WHY be consistent?!?"
 
@@ -148,6 +149,10 @@ function chpwd() {
   #   source $HOME/.zshrc
   fi
 }
+
+# Node Version Manager
+export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || printf %s "${XDG_CONFIG_HOME}/nvm")"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" # This loads nvm
 
 echo ""
 mouse_battery

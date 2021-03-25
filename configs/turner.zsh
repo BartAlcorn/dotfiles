@@ -9,24 +9,24 @@ alias tfkeys='terraform state show aws_iam_access_key'
 
 alias ~pj='$HOME/Projects'
 
+# Compass ECS
 alias ~ca='$HOME/Projects/COMPASS/mss-sead-compass-api && echo -ne "\e]1;Compass-API\a"'
 alias ~ci='$HOME/Projects/COMPASS/mss-sead-compass-iac && echo -ne "\e]1;Compass-IaC\a"'
 alias ~cj='$HOME/Projects/COMPASS/mss-sead-compass-jobs && echo -ne "\e]1;Compass-Jobs\a"'
 alias ~cp='$HOME/Projects/COMPASS/mss-sead-compass-portal && echo -ne "\e]1;Compass-Portal\a"'
 
-alias ~tc='$HOME/Projects/GO/src/github.com/turnercode/ && oo && e. && echo -ne "\e]1;TurnerCode\a"'
-
-alias ~arcys='$HOME/Projects/GO/src/github.com/turnercode/arcys && oo && e. && echo -ne "\e]1;arcys\a"'
-alias ~zephyr='$HOME/Projects/GO/src/github.com/turnercode/zephyr && oo && e. && echo -ne "\e]1;zephyr\a"'
+# GO
 alias ~cmgo='$HOME/Projects/GO/src/github.com/turnercode/odt-common-go && oo && e. && echo -ne "\e]1;ODT-Common-GO\a"'
+alias ~cp2go='$HOME/Projects/GO/src/github.com/turnercode/cp-compass && oo && e. && echo -ne "\e]1;CP-Compass\a"'
 alias ~cpgo='$HOME/Projects/GO/src/github.com/turnercode/odt-compass-go && oo && e. && echo -ne "\e]1;ODT-Compass-GO\a"'
-alias ~lsgo='$HOME/Projects/GO/src/github.com/turnercode/odt-lockstep-go && oo && e. && echo -ne "\e]1;ODT-LockStep-GO\a"'
-alias ~qwgo='$HOME/Projects/GO/src/github.com/turnercode/odt-queuewatcher && oo && e. && echo -ne "\e]1;ODT-Queue-Watcher\a"'
-alias ~wvgo='$HOME/Projects/GO/src/github.com/turnercode/odt-waverly && oo && e. && echo -ne "\e]1;ODT-Waverly\a"'
+alias ~dcm='$HOME/Projects/GO/src/github.com/turnercode/cp-dawg-common && oo && e. && echo -ne "\e]1;CP-DAWG-Common\a"'
 alias ~gobot='$HOME/Projects/GO/src/github.com/turnercode/odtbot && oo && e. && echo -ne "\e]1;ODT-GOBOT\a"'
-
+alias ~lsgo='$HOME/Projects/GO/src/github.com/turnercode/odt-lockstep-go && oo && e. && echo -ne "\e]1;ODT-LockStep-GO\a"'
 alias ~tc='$HOME/Projects/GO/src/github.com/turnercode/ && oo && echo -ne "\e]1;TURNERCODE\a"'
+alias ~wvgo='$HOME/Projects/GO/src/github.com/turnercode/odt-waverly && oo && e. && echo -ne "\e]1;ODT-Waverly\a"'
+alias ~zephyr='$HOME/Projects/GO/src/github.com/turnercode/zephyr && oo && e. && echo -ne "\e]1;zephyr\a" && la'
 
+# ODT ECS
 alias ~odt='$HOME/Projects/ODT/mss-sead-odt && echo -ne "\e]1;ODT\a"'
 alias ~odti='$HOME/Projects/ODT/mss-sead-odt-iac && echo -ne "\e]1;ODT-IaC\a"'
 
@@ -52,4 +52,74 @@ function cstoreupgrade() {
 
 function parse_git_branch_name() {
   export GITBRANCHNAME=$(git branch 2>/dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/\1/')
+}
+
+function stasher() {
+  if [ $# -eq 0 ]; then
+    echo "No arguments provided, you MUST provide the package name!"
+    return
+  fi
+
+  autoload -U zmv
+
+  PKG=$1
+  STAGE=${PWD##*/}
+  SRC="../../configs/${STAGE}/${PKG}.env"
+
+  echo "stash sync $SRC -c zephyr -s secrets-manager -t $STAGE"
+  stash sync $SRC -c zephyr -s secrets-manager -t $STAGE
+
+  zmv 'stash.yml' '${PKG}.yml'
+}
+
+function terraforma() {
+  echo "Converting this lambda folder to use Terraform."
+
+  if [ $# -eq 0 ]; then
+    echo "No arguments provided, you MUST provide the app name!"
+    return
+  fi
+
+  APP=$1
+
+  cp -f ../iac/templates/Makefile Makefile
+  sed -i '' "s/APP/${APP}/g" Makefile
+
+  SetUpStage() {
+    cp -f ../../../iac/templates/terraform.tfvars terraform.tfvars
+    sed -i '' "s/STAGE/${STAGE}/g" terraform.tfvars
+
+    cp -f ../../../iac/templates/terraformer.tf terraformer.tf
+    sed -i '' "s/APP/${APP}/g" terraformer.tf
+    sed -i '' "s/STAGE/${STAGE}/g" terraformer.tf
+
+    ln -s ../main.tf main.tf
+    ln -s ../variables.tf variables.tf
+  }
+
+  mkdir -p "iac/dev"
+  mkdir -p "iac/qa"
+  mkdir -p "iac/uat"
+  mkdir -p "iac/prod"
+
+  cd iac
+  cp -f ../../iac/templates/main.tf main.tf
+  cp -f ../../iac/templates/variables.tf variables.tf
+  sed -i '' "s/APP/${APP}/g" variables.tf
+
+  cd dev
+  STAGE='dev'
+  SetUpStage
+  cd ../qa
+  STAGE='qa'
+  SetUpStage
+  cd ../uat
+  STAGE='uat'
+  SetUpStage
+  cd ../prod
+  STAGE='prod'
+  SetUpStage
+
+  cd ../..
+
 }

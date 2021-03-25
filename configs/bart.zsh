@@ -45,6 +45,8 @@ alias xpaste='xclip -selection clipboard -o'
 alias hex2hsl='color.js $1 $2'
 alias hex2rgb='color.js --rgb $1 $2'
 
+alias ~bw='$HOME/Projects/GO/src/github.com/bartalcorn/bartweb && oo && e. && echo -ne "\e]1;arcys\a"'
+
 # My IP
 alias myip='dig +short myip.opendns.com @resolver1.opendns.com'
 
