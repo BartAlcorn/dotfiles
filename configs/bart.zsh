@@ -20,6 +20,8 @@ alias dl='cd $HOME/Downloads'
 alias dk='cd $HOME/Desktop'
 alias dt='cd $HOME/DotFiles'
 
+alias ~ba='$HOME/Projects/GO/src/github.com/bartalcorn'
+
 # Commands Shortcuts
 alias e='$EDITOR'
 alias e.='$EDITOR .'
@@ -28,6 +30,8 @@ alias x+='chmod +x'
 # Open aliases
 alias o='open'
 alias oo='open .'
+
+alias rm='rm -i'
 
 # *nix List command aliases
 alias hidden='ls -a | grep "^\."'
@@ -79,3 +83,7 @@ alias updateSystem='sudo sh -c "softwareupdate -ia && reboot"'
 alias -s sh=code
 
 alias starwars='telnet towel.blinkenlights.nl'
+
+function mkgodir() {
+  mkdir -p $1 && cd $1
+}

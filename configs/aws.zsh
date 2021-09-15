@@ -24,17 +24,51 @@ alias awsp_cp='AWS_PROFILE=aws-contentplatforms-prod:aws-contentplatforms-prod-d
 alias awsp_cmp='AWS_PROFILE=aws-cp-compass-prod:aws-cp-compass-prod-admin'
 alias awsp_odt='AWS_PROFILE=aws-sead-ondemandtools:aws-sead-ondemandtools-admin'
 
-alias gimme-creds="docker run -it --rm -v ~/.aws/credentials:/root/.aws/credentials -v ~/.okta_aws_login_config:/root/.okta_aws_login_config gimme-aws-creds:latest"
+alias gimme-aws-creds="docker run -it --rm -v ~/.aws/credentials:/root/.aws/credentials -v ~/.okta_aws_login_config:/root/.okta_aws_login_config gimme-aws-creds"
+
+function awspf() {
+  f="/Users/balcorn/DotFiles/configs/awsaccounts.json"
+  accnt="$(jq '.aws[] | .role' $f | fzf --cycle --reverse | xargs)"
+
+  p="$(jq -r '.aws[] | select(.role=="'$accnt'") | .profile' $f)"
+  r="$(jq -r '.aws[] | select(.role=="'$accnt'") | .role' $f)"
+  a="$(jq -r '.aws[] | select(.role=="'$accnt'") | .account' $f)"
+
+  export AWS_PROFILE=$p:$r
+  export AWS_ACCOUNT=$a
+
+  echo "AWS_PROFILE: $AWS_PROFILE" | lolcat
+  echo "AWS_ACCOUNT: $AWS_ACCOUNT" | lolcat
+}
 
 function awsprofile() {
   if [ "$1" = "cmp" ]; then
     export AWS_PROFILE=aws-cp-compass-prod:aws-cp-compass-prod-admin
-    echo "AWS_PROFILE=aws-cp-compass-prod:aws-cp-compass-prod-admin"
+    export AWS_ACCOUNT=298547466439
   elif [ "$1" = "cp" ]; then
     export AWS_PROFILE=aws-contentplatforms-prod:aws-contentplatforms-prod-devops
-    echo "AWS_PROFILE=contentplatforms-prod:aws-contentplatforms-prod-devops"
-  else
+    export AWS_ACCOUNT=277635488776
+  elif [ "$1" = "zfr" ]; then
+    export AWS_PROFILE=aws-zephyr-main:aws-zephyr-main-admin
+    export AWS_ACCOUNT=026155191598
+  elif [ "$1" = "odt" ]; then
     export AWS_PROFILE=aws-sead-ondemandtools:aws-sead-ondemandtools-admin
-    echo "AWS_PROFILE=aws-sead-ondemandtools:aws-sead-ondemandtools-admin"
+    export AWS_ACCOUNT=837769064668
+  else
+    echo "I did not recognize '$1', nothing changed!!"
+  fi
+  echo "AWS_PROFILE: $AWS_PROFILE" | lolcat
+  echo "AWS_ACCOUNT: $AWS_ACCOUNT" | lolcat
+}
+
+# region (no parameter == us-east-1, empty string unsets, otherwise set to new region)
+region() {
+  if (($# == 0)); then
+    set -- us-east-1
+  fi
+  if [[ -z $1 ]]; then
+    unset AWS_DEFAULT_REGION
+  else
+    export AWS_DEFAULT_REGION=$1
   fi
 }

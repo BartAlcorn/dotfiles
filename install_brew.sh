@@ -24,6 +24,7 @@ echo
 brew install ansiweather
 brew install awscli
 brew install bazaar
+brew install
 brew install chtf
 brew install cmatrix
 brew install coreutils
@@ -32,10 +33,12 @@ brew install figlet
 brew install fortune
 brew install func
 brew install fzy
+brew install fzf
 brew install gdbm
 brew install gettext
 brew install git
 brew install glfw
+brew install gray
 brew install go
 brew install htop
 brew install iamy

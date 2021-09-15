@@ -1,3 +1,10 @@
+# # Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
+# # Initialization code that may require console input (password prompts, [y/n]
+# # confirmations, etc.) must go above this block; everything else may go below.
+# if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
+#   source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
+# fi
+
 #!/usr/local/bin/zsh
 # @author Bart Alcorn <bart.alcorn@gmail.com>
 # @repo github.com/bartalcorn/dotfiles
@@ -40,8 +47,8 @@ zinit snippet OMZ::lib/completion.zsh
 zinit snippet OMZ::plugins/git/git.plugin.zsh
 zinit snippet OMZ::plugins/ssh-agent/ssh-agent.plugin.zsh
 
-zinit wait lucid for \
-    ulwlu/enhancd
+# zinit wait lucid for \
+#     ulwlu/enhancd
 
 zinit for \
   djui/alias-tips \
@@ -60,6 +67,10 @@ zinit snippet PZT::modules/completion
 
 zinit ice wait lucid
 zinit snippet OMZ::plugins/golang/golang.plugin.zsh
+
+# zinit ice depth=1; zinit light romkatv/powerlevel10k
+# # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
+# [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
 # SpaceShip-Prompt Settings
 SPACESHIP_TIME_SHOW=true
@@ -94,9 +105,9 @@ export BABEL_ENV=$NODE_ENV
 export PATH="$PATH"
 
 # echo "Bartman" | figlet -f big
-echo -ne $FG[cyan]$FX[bold]"\nD"$FX[none]"igital "$FG[cyan]$FX[bold]"A"$FX[none]"sset "$FG[cyan]$FX[bold]"W"$FX[none]"orkflow "$FG[cyan]$FX[bold]"G"$FX[none]"roup"$FG[cyan]", Go DAWGs\n"
-echo -ne $FG[yellow]$FX[bold]"OnDemand Fools\n"
-echo $FG[red]$FX[bold]"WHY be consistent?!?"
+# echo -ne $FG[cyan]$FX[bold]"\nA"$FX[none]"sset "$FG[cyan]$FX[bold]"W"$FX[none]"ork"$FG[cyan]$FX[bold]"f"$FX[none]"low "$FG[cyan]$FX[bold]"M"$FX[none]"anagement: "$FG[cyan]" AWfM\n"
+# echo -ne $FG[yellow]$FX[bold]"OnDemand Fools\n"
+# echo $FG[red]$FX[bold]"WHY be consistent?!?"
 
 # zsh options
 HISTFILE=~/.zsh_history         # where to store zsh config
@@ -154,5 +165,12 @@ function chpwd() {
 export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || printf %s "${XDG_CONFIG_HOME}/nvm")"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" # This loads nvm
 
+# Ruby Version Manager
+eval "$(rbenv init -)"
+
 echo ""
 mouse_battery
+
+source /Users/balcorn/.config/broot/launcher/bash/br
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
