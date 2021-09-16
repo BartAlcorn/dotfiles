@@ -26,6 +26,11 @@ alias awsp_odt='AWS_PROFILE=aws-sead-ondemandtools:aws-sead-ondemandtools-admin'
 
 alias gimme-aws-creds="docker run -it --rm -v ~/.aws/credentials:/root/.aws/credentials -v ~/.okta_aws_login_config:/root/.okta_aws_login_config gimme-aws-creds"
 
+function awsp() {
+  echo "AWS_PROFILE: $AWS_PROFILE" | lolcat
+  echo "AWS_ACCOUNT: $AWS_ACCOUNT" | lolcat
+}
+
 function awspf() {
   f="$HOME/DotFiles/configs/awsaccounts.json"
   accnt="$(jq -r '.aws[] | .role' $f | fzf --cycle --reverse | xargs)"
@@ -37,12 +42,9 @@ function awsprofile() {
   p="$(jq -r '.aws[] | select(.role=="'$1'") | .profile' $f)"
   r="$(jq -r '.aws[] | select(.role=="'$1'") | .role' $f)"
   a="$(jq -r '.aws[] | select(.role=="'$1'") | .account' $f)"
-
   export AWS_PROFILE=$p:$r
   export AWS_ACCOUNT=$a
-
-  echo "AWS_PROFILE: $AWS_PROFILE" | lolcat
-  echo "AWS_ACCOUNT: $AWS_ACCOUNT" | lolcat
+  awsp
 }
 
 # region (no parameter == us-east-1, empty string unsets, otherwise set to new region)
