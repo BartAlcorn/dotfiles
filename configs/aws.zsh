@@ -27,36 +27,20 @@ alias awsp_odt='AWS_PROFILE=aws-sead-ondemandtools:aws-sead-ondemandtools-admin'
 alias gimme-aws-creds="docker run -it --rm -v ~/.aws/credentials:/root/.aws/credentials -v ~/.okta_aws_login_config:/root/.okta_aws_login_config gimme-aws-creds"
 
 function awspf() {
-  f="/Users/balcorn/DotFiles/configs/awsaccounts.json"
-  accnt="$(jq '.aws[] | .role' $f | fzf --cycle --reverse | xargs)"
+  f="$HOME/DotFiles/configs/awsaccounts.json"
+  accnt="$(jq -r '.aws[] | .role' $f | fzf --cycle --reverse | xargs)"
+  awsprofile $accnt
+}
 
-  p="$(jq -r '.aws[] | select(.role=="'$accnt'") | .profile' $f)"
-  r="$(jq -r '.aws[] | select(.role=="'$accnt'") | .role' $f)"
-  a="$(jq -r '.aws[] | select(.role=="'$accnt'") | .account' $f)"
+function awsprofile() {
+  f="$HOME/DotFiles/configs/awsaccounts.json"
+  p="$(jq -r '.aws[] | select(.role=="'$1'") | .profile' $f)"
+  r="$(jq -r '.aws[] | select(.role=="'$1'") | .role' $f)"
+  a="$(jq -r '.aws[] | select(.role=="'$1'") | .account' $f)"
 
   export AWS_PROFILE=$p:$r
   export AWS_ACCOUNT=$a
 
-  echo "AWS_PROFILE: $AWS_PROFILE" | lolcat
-  echo "AWS_ACCOUNT: $AWS_ACCOUNT" | lolcat
-}
-
-function awsprofile() {
-  if [ "$1" = "cmp" ]; then
-    export AWS_PROFILE=aws-cp-compass-prod:aws-cp-compass-prod-admin
-    export AWS_ACCOUNT=298547466439
-  elif [ "$1" = "cp" ]; then
-    export AWS_PROFILE=aws-contentplatforms-prod:aws-contentplatforms-prod-devops
-    export AWS_ACCOUNT=277635488776
-  elif [ "$1" = "zfr" ]; then
-    export AWS_PROFILE=aws-zephyr-main:aws-zephyr-main-admin
-    export AWS_ACCOUNT=026155191598
-  elif [ "$1" = "odt" ]; then
-    export AWS_PROFILE=aws-sead-ondemandtools:aws-sead-ondemandtools-admin
-    export AWS_ACCOUNT=837769064668
-  else
-    echo "I did not recognize '$1', nothing changed!!"
-  fi
   echo "AWS_PROFILE: $AWS_PROFILE" | lolcat
   echo "AWS_ACCOUNT: $AWS_ACCOUNT" | lolcat
 }
