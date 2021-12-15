@@ -21,6 +21,10 @@ alias dk='cd $HOME/Desktop'
 alias dt='cd $HOME/DotFiles'
 
 alias ~ba='$HOME/Projects/GO/src/github.com/bartalcorn'
+alias ~bw='$HOME/Projects/GO/src/github.com/bartalcorn/bartweb && oo && echo -ne "\e]1;BARTWEB\a"'
+alias ~bwm='$HOME/Projects/GO/src/github.com/bartalcorn/bartweb/bartweb-mantine && oo && e. && echo -ne "\e]1;BARTWEB-MANTINE\a"'
+alias ~gh='$HOME/Projects/GO/src/github.com'
+alias ~gl='$HOME/Projects/GO/src/gitlab.com'
 
 # Commands Shortcuts
 alias e='$EDITOR'
@@ -83,7 +87,3 @@ alias updateSystem='sudo sh -c "softwareupdate -ia && reboot"'
 alias -s sh=code
 
 alias starwars='telnet towel.blinkenlights.nl'
-
-function mkgodir() {
-  mkdir -p $1 && cd $1
-}

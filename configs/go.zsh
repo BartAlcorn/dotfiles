@@ -5,7 +5,7 @@ export GO111MODULE=on
 # paths that we should explicitly NOT use the proxy for
 export GONOPROXY=github.com/turnercode
 # Get libs from Proxy if available, otherwise direct from the repo
-export GOPROXY=https://goproxy.io,direct
+export GOPROXY=https://gocenter.io,direct
 # Anything TurnerCode should be private
 export GOPRIVATE=github.com/turnercode
 # == End GO Environment Variables ==

@@ -20,15 +20,15 @@ yes | brew update
 yes | brew upgrade
 
 echo "Installing base packages..."
-echo
+brew install
 brew install ansiweather
 brew install awscli
 brew install bazaar
-brew install
 brew install chtf
 brew install cmatrix
 brew install coreutils
 brew install cowsay
+brew install exa
 brew install figlet
 brew install fortune
 brew install func
@@ -67,6 +67,7 @@ brew install pcre2
 brew install peco
 brew install pkg-config
 brew install python
+brew install rbenv
 brew install readline
 brew install redis
 brew install sqlite

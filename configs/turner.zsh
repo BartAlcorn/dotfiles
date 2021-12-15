@@ -27,6 +27,8 @@ alias ~lsgo='$HOME/Projects/GO/src/github.com/turnercode/odt-lockstep-go && oo &
 alias ~nt='$HOME/Projects/GO/src/github.com/bartalcorn/nautilus && oo && e. && echo -ne "\e]1;Nautilus\a"'
 alias ~tc='$HOME/Projects/GO/src/github.com/turnercode/ && oo && echo -ne "\e]1;TURNERCODE\a"'
 alias ~wvgo='$HOME/Projects/GO/src/github.com/turnercode/odt-waverly && oo && e. && echo -ne "\e]1;ODT-Waverly\a"'
+alias ~uc='$HOME/Projects/GO/src/gitlab.com && oo && e. && echo -ne "\e]1;Unchained\a" && la'
+alias ~ucc='$HOME/Projects/GO/src/github.com/turnercode/unchained-common && oo && e. && echo -ne "\e]1;Unchained Common\a" && la'
 alias ~zephyr='$HOME/Projects/GO/src/github.com/turnercode/zephyr && oo && e. && echo -ne "\e]1;zephyr\a" && la'
 
 # ODT ECS
