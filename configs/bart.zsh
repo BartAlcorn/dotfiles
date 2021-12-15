@@ -87,3 +87,8 @@ alias updateSystem='sudo sh -c "softwareupdate -ia && reboot"'
 alias -s sh=code
 
 alias starwars='telnet towel.blinkenlights.nl'
+
+function deleteAllNode() {
+    echo $FG[yellow]$FX[bold]"Deleting all 'node_modules' folders recursively downward..."$FX[none]
+    find . -name "node_modules" -type d -prune -exec rm -rf '{}' +
+}
