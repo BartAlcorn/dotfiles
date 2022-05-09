@@ -1,9 +1,9 @@
-# # Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
-# # Initialization code that may require console input (password prompts, [y/n]
-# # confirmations, etc.) must go above this block; everything else may go below.
-# if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
-#   source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
-# fi
+# Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
+# Initialization code that may require console input (password prompts, [y/n]
+# confirmations, etc.) must go above this block; everything else may go below.
+if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
+  source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
+fi
 
 #!/usr/local/bin/zsh
 # @author Bart Alcorn <bart.alcorn@gmail.com>
@@ -14,7 +14,7 @@ GREEN="\033[1;32m"
 YELLOW="\033[1;33m"
 NOCOLOR="\033[0m"
 
-echo $GREEN"Starting ZSH..."$NOCOLOR
+# echo $GREEN"Starting ZSH..."$NOCOLOR
 # echo $YELLOW"I really should put an Insta-Prompt here."$NOCOLOR
 # echo $GREEN">"$NOCOLOR
 
@@ -73,12 +73,14 @@ zinit snippet OMZ::plugins/golang/golang.plugin.zsh
 # [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
 # SpaceShip-Prompt Settings
-SPACESHIP_TIME_SHOW=true
-SPACESHIP_AWS_SHOW=false
-SPACESHIP_GOLANG_SHOW=true
-SPACESHIP_TERRAFORM_SHOW=true
-SPACESHIP_BATTERY_SHOW=always
-zinit light denysdovhan/spaceship-prompt
+# SPACESHIP_TIME_SHOW=true
+# SPACESHIP_AWS_SHOW=false
+# SPACESHIP_GOLANG_SHOW=true
+# SPACESHIP_TERRAFORM_SHOW=true
+# SPACESHIP_BATTERY_SHOW=always
+# zinit light denysdovhan/spaceship-prompt
+
+zinit ice depth=1; zinit light romkatv/powerlevel10k
 
 zinit load chrissicool/zsh-256color
 
@@ -99,9 +101,9 @@ zinit light Aloxaf/fzf-tab
 for config_file in $HOME/DotFiles/configs/*.zsh; do source $config_file; done
 
 export EDITOR='code'
-export COMPASS_ENV=local
-export NODE_ENV=development
-export BABEL_ENV=$NODE_ENV
+# export COMPASS_ENV=local
+# export NODE_ENV=development
+# export BABEL_ENV=$NODE_ENV
 export PATH="$PATH"
 
 # echo "Bartman" | figlet -f big
@@ -174,3 +176,7 @@ mouse_battery
 source /Users/balcorn/.config/broot/launcher/bash/br
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
+# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
+[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion

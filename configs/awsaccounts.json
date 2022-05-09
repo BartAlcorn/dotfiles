@@ -1,6 +1,11 @@
 {
   "aws": [
     {
+      "role": "aws-msc-poc-nonprod-admin",
+      "profile": "aws-msc-poc-nonprod",
+      "account": "530694037299"
+    },
+    {
       "role": "aws-cp-compass-prod-admin",
       "profile": "aws-cp-compass-prod",
       "account": "298547466439"
@@ -14,6 +19,16 @@
       "role": "aws-contentplatforms-prod-devops",
       "profile": "aws-contentplatforms-prod",
       "account": "277635488776"
+    },
+    {
+      "role": "aws-msc-ops-nonprod-developer-disco",
+      "profile": "aws-msc-ops-nonprod",
+      "account": "929265930804"
+    },
+    {
+      "role": "aws-msc-ops-prod-developer-disco",
+      "profile": "aws-msc-ops-prod",
+      "account": "548447244903"
     },
     {
       "role": "aws-sead-ondemandtools-admin",

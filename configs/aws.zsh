@@ -4,7 +4,7 @@
 #
 
 export AWS_SDK_LOAD_CONFIG=1
-export AWS_PROFILE=aws-sead-ondemandtools:aws-sead-ondemandtools-admin
+export AWS_PROFILE=aws-msc-ops-nonprod:aws-msc-ops-nonprod-developer-disco
 export AWS_REGION=us-east-1
 export AWS_DEFAULT_REGION=us-east-1
 export ADFS_DOMAIN="Turner"
@@ -15,6 +15,9 @@ export ADFS_URL="https://sts.turner.com/adfs/ls/IdpInitiatedSignOn.aspx?loginToR
 alias samld='docker run --rm -it -v $HOME/.aws:/aws turnerlabs/samlkeygen authenticate --url "https://sts.turner.com/adfs/ls/IdpInitiatedSignOn.aspx?loginToRp=urn:amazon:webservices" --domain Turner --username $USER --all-accounts'
 alias awsprofs='docker run --rm -v $HOME/.aws:/aws turnerlabs/samlkeygen list-profiles'
 alias awsprof='docker run --rm -v $HOME/.aws:/aws turnerlabs/samlkeygen select-profile'
+
+alias npmlogin='awspf && gimme-aws-creds'
+alias awsca='echo "Retrieving CodeArtifact Auth" | lolcat && aws codeartifact login --tool npm --domain aeng --domain-owner 530694037299 --repository npm-store'
 
 # run AWS DynamoDB locally, for testing
 alias dynamo-local='docker run -p 8000:8000 amazon/dynamodb-local'

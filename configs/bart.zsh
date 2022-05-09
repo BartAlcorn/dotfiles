@@ -20,10 +20,17 @@ alias dl='cd $HOME/Downloads'
 alias dk='cd $HOME/Desktop'
 alias dt='cd $HOME/DotFiles'
 
-alias ~ba='$HOME/Projects/GO/src/github.com/bartalcorn'
-alias ~bw='$HOME/Projects/GO/src/github.com/bartalcorn/bartweb && oo && echo -ne "\e]1;BARTWEB\a"'
-alias ~bwm='$HOME/Projects/GO/src/github.com/bartalcorn/bartweb/bartweb-mantine && oo && e. && echo -ne "\e]1;BARTWEB-MANTINE\a"'
+alias ~ba='$HOME/Projects/GIT/github.com/bartalcorn'
+alias ~ba='$HOME/Projects/GIT/'
+alias ~gt='$HOME/Projects/GIT && oo'
+alias ~bp='$HOME/Projects/GIT/git.wmedia.tech/blueprint/blueprint'
+alias ~bpw='$HOME/Projects/GIT/git.wmedia.tech/blueprint/web-ui'
+alias ~lso='$HOME/Projects/GIT/git.wmedia.tech/lasso/web-ui'
+alias ~mnt='code $HOME/Projects/GIT/github.com/mantinedev/mantine'
+alias ~bw='$HOME/Projects/GIT/github.com/bartalcorn/bartweb && oo && echo -ne "\e]1;BARTWEB\a"'
+alias ~bwm='$HOME/Projects/GIT/github.com/bartalcorn/bartweb/bartweb-mantine && oo && e. && echo -ne "\e]1;BARTWEB-MANTINE\a"'
 alias ~gh='$HOME/Projects/GO/src/github.com'
+alias ~gwm='$HOME/Projects/GIT/git.wmedia.tech'
 alias ~gl='$HOME/Projects/GO/src/gitlab.com'
 
 # Commands Shortcuts
@@ -53,7 +60,7 @@ alias xpaste='xclip -selection clipboard -o'
 alias hex2hsl='color.js $1 $2'
 alias hex2rgb='color.js --rgb $1 $2'
 
-alias ~bw='$HOME/Projects/GO/src/github.com/bartalcorn/bartweb && oo && e. && echo -ne "\e]1;arcys\a"'
+alias ~bw='$HOME/Projects/GIT/github.com/bartalcorn/bartweb && oo && e. && echo -ne "\e]1;arcys\a"'
 
 # My IP
 alias myip='dig +short myip.opendns.com @resolver1.opendns.com'
