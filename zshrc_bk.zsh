@@ -88,7 +88,6 @@ export EDITOR='code'
 export COMPASS_ENV=local
 export NODE_ENV=development
 export BABEL_ENV=$NODE_ENV
-# export CIRCLE_TOKEN=4558c291d0a547b6f8fc7b38df04e55a9e5e392e
 
 # Path
 export PATH="$PATH"
