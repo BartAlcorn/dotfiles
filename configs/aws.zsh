@@ -16,8 +16,8 @@ alias samld='docker run --rm -it -v $HOME/.aws:/aws turnerlabs/samlkeygen authen
 alias awsprofs='docker run --rm -v $HOME/.aws:/aws turnerlabs/samlkeygen list-profiles'
 alias awsprof='docker run --rm -v $HOME/.aws:/aws turnerlabs/samlkeygen select-profile'
 
-alias npmlogin='awspf && gimme-aws-creds'
-alias awsca='echo "Retrieving CodeArtifact Auth" | lolcat && aws codeartifact login --tool npm --domain aeng --domain-owner 530694037299 --repository npm-store'
+alias npmlogin='awspf && gimme-aws-creds --roles arn:aws:iam::530694037299:role/aws-msc-poc-nonprod-admin && awsca'
+alias awsca='echo "Retrieving CodeArtifact Auth" | lolcat && aws codeartifact login --tool npm --repository msc-repo --domain ps-prod --domain-owner 986501092299 --region us-east-1'
 
 # run AWS DynamoDB locally, for testing
 alias dynamo-local='docker run -p 8000:8000 amazon/dynamodb-local'

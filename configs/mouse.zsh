@@ -2,7 +2,7 @@ function mouse_battery() {
 devices=$(ioreg -r -l -k "BatteryPercent")
 
 for x in $devices; do
-  device=("${(@f)$(echo $x | grep '"Product" =' | awk '{print $4}')}")
+  device=("${(@f)$(echo $x | grep '"Product" =' | awk -F'"' '{print $4}')}")
   charge=("${(@f)$(echo $x | grep '"BatteryPercent" =' | awk '{print $3}')}")
 done
 

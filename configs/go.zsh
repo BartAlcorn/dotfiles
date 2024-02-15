@@ -1,18 +1,19 @@
 # == GO Environment Variables ==
 export GOPATH=$HOME/Projects/GO
-# export GOROOT=$HOME/.gobrew/current/bin #"$(brew --prefix golang)/libexec"
 export GOTOOLDIR=$HOME/.gobrew/current/bin
 export GO111MODULE=on
 # paths that we should explicitly NOT use the proxy for
-export GONOPROXY=github.com/turnercode
+# export GONOPROXY=github.com/turnercode
+export GONOPROXY=github.com/wbd-streaming
 # Get libs from Proxy if available, otherwise direct from the repo
 # export GOPROXY=https://gocenter.io,direct
-GOPROXY=direct
+GOPROXY=github.com/wbd-streaming # direct
 # Anything TurnerCode should be private
-export GOPRIVATE=github.com/turnercode
+# export GOPRIVATE=github.com/turnercode
+export GOPRIVATE=github.com/wbd-streaming
 # == End GO Environment Variables ==
 
-export PATH="$HOME/Projects/GO/bin:$HOME/.gobrew/current/bin:$HOME/.gobrew/bin:$PATH"
+export PATH="$HOME/Projects/GO/bin:$HOME/.gobrew/current/bin:$HOME/.gobrew/bin:$PATH:./bin"
 
 alias ~go='$GOPATH'
 alias ~gosrc='$GOPATH/src'
@@ -23,6 +24,7 @@ alias gbi='gobrew install'
 alias gbu='gobrew use'
 alias grm='go run '
 alias grm='go run main.go'
+alias gmt='go mod tidy'
 alias godoclocal='godoc -http :6000 & sleep 4 && open -a "Google Chrome" http://localhost:6000/pkg'
 
 function makego() {

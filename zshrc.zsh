@@ -1,10 +1,3 @@
-# Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
-# Initialization code that may require console input (password prompts, [y/n]
-# confirmations, etc.) must go above this block; everything else may go below.
-if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
-  source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
-fi
-
 #!/usr/local/bin/zsh
 # @author Bart Alcorn <bart.alcorn@gmail.com>
 # @repo github.com/bartalcorn/dotfiles
@@ -33,7 +26,7 @@ autoload -Uz _zinit
 
 ### End of Zinit's installer chunk
 
-zinit light zinit-zsh/z-a-as-monitor
+# zinit light zinit-zsh/z-a-as-monitor
 zinit light zsh-users/zsh-autosuggestions
 zinit light zdharma/fast-syntax-highlighting
 zinit light zdharma/history-search-multi-word
@@ -42,13 +35,10 @@ zinit light zsh-users/zsh-apple-touchbar
 zinit light knu/zsh-manydots-magic
 zinit light ogham/exa
 
-zinit snippet OMZ::plugins/history/history.plugin.zsh
-zinit snippet OMZ::lib/completion.zsh
-zinit snippet OMZ::plugins/git/git.plugin.zsh
-zinit snippet OMZ::plugins/ssh-agent/ssh-agent.plugin.zsh
-
-# zinit wait lucid for \
-#     ulwlu/enhancd
+# zinit snippet OMZ::plugins/history/history.plugin.zsh
+# zinit snippet OMZ::lib/completion.zsh
+# zinit snippet OMZ::plugins/git/git.plugin.zsh
+# zinit snippet OMZ::plugins/ssh-agent/ssh-agent.plugin.zsh
 
 zinit for \
   djui/alias-tips \
@@ -57,32 +47,11 @@ zinit for \
   PZT::modules/terminal \
   PZT::modules/utility
 
-  # Some Prezto modules to improve misc stuff
-zinit ice svn wait lucid
-zinit snippet PZT::modules/helper
-zinit ice svn wait lucid
-zinit snippet PZT::modules/directory
-zinit ice svn wait lucid
-zinit snippet PZT::modules/completion
-
-zinit ice wait lucid
-zinit snippet OMZ::plugins/golang/golang.plugin.zsh
-
-# zinit ice depth=1; zinit light romkatv/powerlevel10k
-# # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
-# [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
-
-# SpaceShip-Prompt Settings
-# SPACESHIP_TIME_SHOW=true
-# SPACESHIP_AWS_SHOW=false
-# SPACESHIP_GOLANG_SHOW=true
-# SPACESHIP_TERRAFORM_SHOW=true
-# SPACESHIP_BATTERY_SHOW=always
-# zinit light denysdovhan/spaceship-prompt
-
-zinit ice depth=1; zinit light romkatv/powerlevel10k
-
+# SPACESHIP-PROMPT
+zinit light spaceship-prompt/spaceship-prompt
 zinit load chrissicool/zsh-256color
+
+# zinit load psprint/xzmsg
 
 # Plugins
 zinit ice depth=1 lucid
@@ -91,9 +60,6 @@ zinit light trystan2k/zsh-tab-title
 zinit ice depth=1 wait lucid atinit"ZINIT[COMPINIT_OPTS]=-C; zpcompinit; zpcdreplay"
 zinit light zdharma/fast-syntax-highlighting
 
-zinit ice depth=1 wait"2" lucid
-zinit light hlissner/zsh-autopair
-
 zinit ice depth=1 wait lucid
 zinit light Aloxaf/fzf-tab
 
@@ -101,9 +67,6 @@ zinit light Aloxaf/fzf-tab
 for config_file in $HOME/DotFiles/configs/*.zsh; do source $config_file; done
 
 export EDITOR='code'
-# export COMPASS_ENV=local
-# export NODE_ENV=development
-# export BABEL_ENV=$NODE_ENV
 export PATH="$PATH"
 
 # echo "Bartman" | figlet -f big
@@ -164,19 +127,28 @@ function chpwd() {
 }
 
 # Node Version Manager
-export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || printf %s "${XDG_CONFIG_HOME}/nvm")"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" # This loads nvm
+# export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || printf %s "${XDG_CONFIG_HOME}/nvm")"
+# [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" # This loads nvm
 
 # Ruby Version Manager
-eval "$(rbenv init -)"
+# eval "$(rbenv init -)"
+
+# PGP Agent
+export GPG_TTY=$(tty)
+gpgconf --launch gpg-agent
 
 echo ""
 mouse_battery
 
-source /Users/balcorn/.config/broot/launcher/bash/br
+# source /Users/balcorn/.config/broot/launcher/bash/br
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
-
-# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
-[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+
+# pnpm
+export PNPM_HOME="/Users/balcorn/Library/pnpm"
+case ":$PATH:" in
+  *":$PNPM_HOME:"*) ;;
+  *) export PATH="$PNPM_HOME:$PATH" ;;
+esac
+# pnpm end
