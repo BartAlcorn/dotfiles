@@ -120,9 +120,6 @@ setopt PROMPT_SUBST
 function chpwd() {
   if [ -r $PWD/.zsh_config.zsh ]; then
     source $PWD/.zsh_config.zsh
-  # else
-  #   print "no .zsh_config.zsh found."
-  #   source $HOME/.zshrc
   fi
 }
 
