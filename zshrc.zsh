@@ -1,6 +1,10 @@
-#!/usr/local/bin/zsh
+#!/bin/zsh
 # @author Bart Alcorn <bart.alcorn@gmail.com>
 # @repo github.com/bartalcorn/dotfiles
+
+if [[ -n "$ZSH_DEBUGRC" ]]; then
+  zmodload zsh/zprof
+fi
 
 RED="\033[1;31m"
 GREEN="\033[1;32m"
@@ -11,7 +15,7 @@ NOCOLOR="\033[0m"
 # echo $YELLOW"I really should put an Insta-Prompt here."$NOCOLOR
 # echo $GREEN">"$NOCOLOR
 
-### Added by Zinit's installer
+# ### Added by Zinit's installer
 if [[ ! -f $HOME/.zinit/bin/zinit.zsh ]]; then
   print -P "%F{33}▓▒░ %F{220}Installing %F{33}DHARMA%F{220} Initiative Plugin Manager (%F{33}zdharma/zinit%F{220})…%f"
   command mkdir -p "$HOME/.zinit" && command chmod g-rwX "$HOME/.zinit"
@@ -75,20 +79,20 @@ export PATH="$PATH"
 # echo $FG[red]$FX[bold]"WHY be consistent?!?"
 
 # zsh options
-HISTFILE=~/.zsh_history         # where to store zsh config
+HISTFILE=~/.zsh_history # where to store zsh config
 HISTSIZE=50000
 SAVEHIST=10000
-setopt BANG_HIST                 # Treat the '!' character specially during expansion.
-setopt EXTENDED_HISTORY          # Write the history file in the ':start:elapsed;command' format.
-setopt SHARE_HISTORY             # Share history between all sessions.
-setopt HIST_EXPIRE_DUPS_FIRST    # Expire a duplicate event first when trimming history.
-setopt HIST_IGNORE_DUPS          # Do not record an event that was just recorded again.
-setopt HIST_IGNORE_ALL_DUPS      # Delete an old recorded event if a new event is a duplicate.
-setopt HIST_FIND_NO_DUPS         # Do not display a previously found event.
-setopt HIST_IGNORE_SPACE         # Do not record an event starting with a space.
-setopt HIST_SAVE_NO_DUPS         # Do not write a duplicate event to the history file.
-setopt HIST_VERIFY               # Do not execute immediately upon history expansion.
-setopt HIST_BEEP                 # Beep when accessing non-existent history.
+setopt BANG_HIST              # Treat the '!' character specially during expansion.
+setopt EXTENDED_HISTORY       # Write the history file in the ':start:elapsed;command' format.
+setopt SHARE_HISTORY          # Share history between all sessions.
+setopt HIST_EXPIRE_DUPS_FIRST # Expire a duplicate event first when trimming history.
+setopt HIST_IGNORE_DUPS       # Do not record an event that was just recorded again.
+setopt HIST_IGNORE_ALL_DUPS   # Delete an old recorded event if a new event is a duplicate.
+setopt HIST_FIND_NO_DUPS      # Do not display a previously found event.
+setopt HIST_IGNORE_SPACE      # Do not record an event starting with a space.
+setopt HIST_SAVE_NO_DUPS      # Do not write a duplicate event to the history file.
+setopt HIST_VERIFY            # Do not execute immediately upon history expansion.
+setopt HIST_BEEP              # Beep when accessing non-existent history.
 
 # Changing directories
 setopt AUTO_CD
@@ -118,14 +122,10 @@ setopt PROMPT_SUBST
 
 # per directory configs
 function chpwd() {
-  if [ -r $PWD/.zsh_config.zsh ]; then
-    source $PWD/.zsh_config.zsh
+  if [ -r $PWD/.chpwd.zsh ]; then
+    source $PWD/.chpwd.zsh
   fi
 }
-
-# Node Version Manager
-# export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || printf %s "${XDG_CONFIG_HOME}/nvm")"
-# [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" # This loads nvm
 
 # Ruby Version Manager
 # eval "$(rbenv init -)"
@@ -140,12 +140,23 @@ mouse_battery
 # source /Users/balcorn/.config/broot/launcher/bash/br
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
-# pnpm
-export PNPM_HOME="/Users/balcorn/Library/pnpm"
-case ":$PATH:" in
-  *":$PNPM_HOME:"*) ;;
-  *) export PATH="$PNPM_HOME:$PATH" ;;
-esac
-# pnpm end
+source ~/.iterm2_shell_integration.zsh
+
+function iterm2_print_user_vars() {
+    iterm2_set_user_var badge $badge
+}
+
+if [[ -n "$ZSH_DEBUGRC" ]]; then
+  zprof
+fi
+
+# Load a few important annexes, without Turbo
+# (this is currently required for annexes)
+# zinit light-mode for \
+#   zdharma-continuum/zinit-annex-as-monitor \
+#   zdharma-continuum/zinit-annex-bin-gem-node \
+#   zdharma-continuum/zinit-annex-patch-dl \
+#   zdharma-continuum/zinit-annex-rust
+
+### End of Zinit's installer chunk
