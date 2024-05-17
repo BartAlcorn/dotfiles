@@ -52,8 +52,15 @@ zinit light denysdovhan/spaceship-prompt
 for config_file in $HOME/dotfiles/configs/*.zsh; do source $config_file; done
 
 export EDITOR='code'
+export COMPASS_ENV=local
 export NODE_ENV=development
+export BABEL_ENV=$NODE_ENV
 export PATH="$PATH"
+
+# echo "Bartman" | figlet -f big
+# echo -ne $FG[cyan]$FX[bold]"\nA"$FX[none]"sset "$FG[cyan]$FX[bold]"W"$FX[none]"ork"$FG[cyan]$FX[bold]"f"$FX[none]"low "$FG[cyan]$FX[bold]"M"$FX[none]"anagement: "$FG[cyan]" AWfM\n"
+# echo -ne $FG[yellow]$FX[bold]"OnDemand Fools\n"
+# echo $FG[red]$FX[bold]"WHY be consistent?!?"
 
 # zsh options
 HISTFILE=~/.zsh_history         # where to store zsh config

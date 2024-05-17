@@ -4,7 +4,7 @@
 #
 
 export AWS_SDK_LOAD_CONFIG=1
-export AWS_PROFILE=aws-sead-ondemandtools:aws-sead-ondemandtools-admin
+export AWS_PROFILE=aws-msc-ops-nonprod:aws-msc-ops-nonprod-developer-disco
 export AWS_REGION=us-east-1
 export AWS_DEFAULT_REGION=us-east-1
 export ADFS_DOMAIN="Turner"
@@ -16,13 +16,12 @@ alias samld='docker run --rm -it -v $HOME/.aws:/aws turnerlabs/samlkeygen authen
 alias awsprofs='docker run --rm -v $HOME/.aws:/aws turnerlabs/samlkeygen list-profiles'
 alias awsprof='docker run --rm -v $HOME/.aws:/aws turnerlabs/samlkeygen select-profile'
 
+alias npmlogin='awspf && gimme-aws-creds --roles arn:aws:iam::530694037299:role/aws-msc-poc-nonprod-admin && awsca'
+alias awsca='echo "Retrieving CodeArtifact Auth" | lolcat && aws codeartifact login --tool npm --repository msc-repo --domain ps-prod --domain-owner 986501092299 --region us-east-1'
+
 # run AWS DynamoDB locally, for testing
 alias dynamo-local='docker run -p 8000:8000 amazon/dynamodb-local'
 alias awsrepologin='aws ecr get-login --no-include-email'
-
-alias awsp_cp='AWS_PROFILE=aws-contentplatforms-prod:aws-contentplatforms-prod-devops'
-alias awsp_cmp='AWS_PROFILE=aws-cp-compass-prod:aws-cp-compass-prod-admin'
-alias awsp_odt='AWS_PROFILE=aws-sead-ondemandtools:aws-sead-ondemandtools-admin'
 
 alias gimme-aws-creds="docker run -it --rm -v ~/.aws/credentials:/root/.aws/credentials -v ~/.okta_aws_login_config:/root/.okta_aws_login_config gimme-aws-creds"
 
@@ -32,13 +31,13 @@ function awsp() {
 }
 
 function awspf() {
-  f="$HOME/DotFiles/configs/awsaccounts.json"
+  f="$HOME/dotfiles/configs/awsaccounts.json"
   accnt="$(jq -r '.aws[] | .role' $f | fzf --cycle --reverse | xargs)"
   awsprofile $accnt
 }
 
 function awsprofile() {
-  f="$HOME/DotFiles/configs/awsaccounts.json"
+  f="$HOME/dotfiles/configs/awsaccounts.json"
   p="$(jq -r '.aws[] | select(.role=="'$1'") | .profile' $f)"
   r="$(jq -r '.aws[] | select(.role=="'$1'") | .role' $f)"
   a="$(jq -r '.aws[] | select(.role=="'$1'") | .account' $f)"

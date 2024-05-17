@@ -6,7 +6,7 @@ Personal dotfiles for easier migration of dev step up.
 
 It is important that the directory for these files are stored
 
-`/Users/<your username>/DotFiles`
+`/Users/<your username>/dotfiles`
 
 The below install instructions should put them in the correct place, but you should verify before continuing.
 
@@ -22,9 +22,9 @@ In iTerm:
 
 `cd $home`
 
-`git clone git@github.com:turnercode/BartAlcorn/dotfiles.git DotFiles`
+`git clone git@github.com:turnercode/BartAlcorn/dotfiles.git dotfiles`
 
-`cd DotFiles`
+`cd dotfiles`
 
 `source ./install.zsh`
 

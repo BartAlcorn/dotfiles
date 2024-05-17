@@ -7,9 +7,9 @@
 # for echo coloring and other syntax help
 
 # Bart conveniences
-alias editaliases='$EDITOR $HOME/DotFiles/configs'
-alias editzsh='$EDITOR $HOME/DotFiles/'
-alias editzshrc='$EDITOR $HOME/DotFiles/zshrc.zsh'
+alias editaliases='$EDITOR $HOME/dotfiles/configs'
+alias editzsh='$EDITOR $HOME/dotfiles/'
+alias editzshrc='$EDITOR $HOME/dotfiles/zshrc.zsh'
 alias grep='grep  --color=auto --exclude-dir={.bzr,CVS,.git,.hg,.svn}'
 
 # Because clear just wasn't short enough
@@ -18,12 +18,18 @@ alias clr='clear'
 # Folders Shortcuts
 alias dl='cd $HOME/Downloads'
 alias dk='cd $HOME/Desktop'
-alias dt='cd $HOME/DotFiles'
+alias dt='cd $HOME/dotfiles'
 
 alias ~ba='$HOME/Projects/GO/src/github.com/bartalcorn'
+alias ~ctm='$HOME/Projects/GO/src/continuum'
+alias ~gh='$HOME/Projects/GO/src/github.com'
+alias ~gopo='$HOME/Projects/GO/src/github.com/bartalcorn/goponents'
+alias ~gosrc='$HOME/Projects/GO/src'
+alias ~wgx='$HOME/Projects/GO/src/github.com/bartalcorn/wgx'
 
 # Commands Shortcuts
 alias e='$EDITOR'
+alias edit='$EDITOR'
 alias e.='$EDITOR .'
 alias x+='chmod +x'
 
@@ -35,7 +41,7 @@ alias rm='rm -i'
 
 # *nix List command aliases
 alias hidden='ls -a | grep "^\."'
-#####  see exa.zsh
+#####  see eza.zsh
 # alias ls='ls -Gl'
 # alias ll='ls -alF'
 # alias la='ls -Al'
@@ -48,11 +54,6 @@ alias xpaste='xclip -selection clipboard -o'
 # Color conversion
 alias hex2hsl='color.js $1 $2'
 alias hex2rgb='color.js --rgb $1 $2'
-
-alias ~bw='$HOME/Projects/GO/src/github.com/bartalcorn/bartweb && oo && e. && echo -ne "\e]1;arcys\a"'
-
-# My IP
-alias myip='dig +short myip.opendns.com @resolver1.opendns.com'
 
 # Password generator
 # Generate random password, copies it into clipboard and outputs it to terminal
@@ -84,6 +85,7 @@ alias -s sh=code
 
 alias starwars='telnet towel.blinkenlights.nl'
 
-function mkgodir() {
-  mkdir -p $1 && cd $1
+function deleteAllNode() {
+    echo $FG[yellow]$FX[bold]"Deleting all 'node_modules' folders recursively downward..."$FX[none]
+    find . -name "node_modules" -type d -prune -exec rm -rf '{}' +
 }

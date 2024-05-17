@@ -9,7 +9,7 @@ echo "Checking if Homebrew is already installed..."
 # Credit: https://gist.github.com/codeinthehole/26b37efa67041e1307db
 if test ! $(which brew); then
   echo "Installing Homebrew..."
-  yes | /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)" &>/dev/null
+  /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 else
   echo "Homebrew is already installed..."
 fi
@@ -24,11 +24,11 @@ echo
 brew install ansiweather
 brew install awscli
 brew install bazaar
-brew install
 brew install chtf
 brew install cmatrix
 brew install coreutils
 brew install cowsay
+brew install eza
 brew install figlet
 brew install fortune
 brew install func
@@ -39,7 +39,6 @@ brew install gettext
 brew install git
 brew install glfw
 brew install gray
-brew install go
 brew install htop
 brew install iamy
 brew install icu4c
@@ -71,6 +70,7 @@ brew install readline
 brew install redis
 brew install sqlite
 brew install starship
+brew install stow
 brew install telnet
 brew install terraform
 brew install tldr

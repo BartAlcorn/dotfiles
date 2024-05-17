@@ -12,6 +12,11 @@ function xd() {
   fi
 }
 
+function xdd() {
+  ccdd="$(dirs -v | fzf --cycle --reverse | cut -f1)"
+  xd $ccdd
+}
+
 # Create a new directory and change to it
 function mkd() {
   mkdir -p "$@" && cd "$_"

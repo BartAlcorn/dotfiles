@@ -75,7 +75,7 @@ zplug load # --verbose
 # == End Zplug ==
 
 # Load zsh configs and extra files
-for config_file in $HOME/DotFiles/configs/*.zsh; do source $config_file; done
+for config_file in $HOME/dotfiles/configs/*.zsh; do source $config_file; done
 
 # Node Version Manager
 export NVM_DIR="$HOME/.nvm"
