@@ -56,20 +56,20 @@ export NODE_ENV=development
 export PATH="$PATH"
 
 # zsh options
-HISTFILE=~/.zsh_history         # where to store zsh config
+HISTFILE=~/.zsh_history # where to store zsh config
 HISTSIZE=50000
 SAVEHIST=10000
-setopt BANG_HIST                 # Treat the '!' character specially during expansion.
-setopt EXTENDED_HISTORY          # Write the history file in the ':start:elapsed;command' format.
-setopt SHARE_HISTORY             # Share history between all sessions.
-setopt HIST_EXPIRE_DUPS_FIRST    # Expire a duplicate event first when trimming history.
-setopt HIST_IGNORE_DUPS          # Do not record an event that was just recorded again.
-setopt HIST_IGNORE_ALL_DUPS      # Delete an old recorded event if a new event is a duplicate.
-setopt HIST_FIND_NO_DUPS         # Do not display a previously found event.
-setopt HIST_IGNORE_SPACE         # Do not record an event starting with a space.
-setopt HIST_SAVE_NO_DUPS         # Do not write a duplicate event to the history file.
-setopt HIST_VERIFY               # Do not execute immediately upon history expansion.
-setopt HIST_BEEP                 # Beep when accessing non-existent history.
+setopt BANG_HIST              # Treat the '!' character specially during expansion.
+setopt EXTENDED_HISTORY       # Write the history file in the ':start:elapsed;command' format.
+setopt SHARE_HISTORY          # Share history between all sessions.
+setopt HIST_EXPIRE_DUPS_FIRST # Expire a duplicate event first when trimming history.
+setopt HIST_IGNORE_DUPS       # Do not record an event that was just recorded again.
+setopt HIST_IGNORE_ALL_DUPS   # Delete an old recorded event if a new event is a duplicate.
+setopt HIST_FIND_NO_DUPS      # Do not display a previously found event.
+setopt HIST_IGNORE_SPACE      # Do not record an event starting with a space.
+setopt HIST_SAVE_NO_DUPS      # Do not write a duplicate event to the history file.
+setopt HIST_VERIFY            # Do not execute immediately upon history expansion.
+setopt HIST_BEEP              # Beep when accessing non-existent history.
 
 # Changing directories
 setopt AUTO_CD
@@ -94,11 +94,8 @@ setopt PROMPT_SUBST
 
 # per directory configs
 function chpwd() {
-  if [ -r $PWD/.zsh_config.zsh ]; then
-    source $PWD/.zsh_config.zsh
-  # else
-  #   print "no .zsh_config.zsh found."
-  #   source $HOME/.zshrc
+  if [ -r $PWD/.chpwd.zsh ]; then
+    source $PWD/.chpwd.zsh
   fi
 }
 

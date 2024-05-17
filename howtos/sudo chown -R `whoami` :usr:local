@@ -1,0 +1,9 @@
+sudo chown -R `whoami` /usr/local
+
+brew link --overwrite node
+
+
+
+
+
+brew install zsh-syntax-highlighting
