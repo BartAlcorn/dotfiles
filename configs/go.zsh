@@ -57,7 +57,7 @@ function makego() {
 }
 
 func syncversion() {
-  srcv=$(cat ./src/internal/app/VERSION.txt)
+  srcv=$(cat ./internal/app/VERSION.txt)
   clientv=$(jq -r .version ./client/package.json)
 
   if [ "$srcv" != "$clientv" ]; then
