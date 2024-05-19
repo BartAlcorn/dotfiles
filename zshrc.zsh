@@ -23,16 +23,20 @@ zinit ice depth=1;
 # Add in zsh plugins
 zinit light zsh-users/zsh-syntax-highlighting
 zinit light zsh-users/zsh-completions
+zinit light zdharma/history-search-multi-word
+zinit light zsh-users/zsh-history-substring-search
 zinit light zsh-users/zsh-autosuggestions
 zinit light Aloxaf/fzf-tab
 zinit light knu/zsh-manydots-magic
 
 # Add in snippets
-zinit snippet OMZP::git
 zinit snippet OMZ::plugins/golang/golang.plugin.zsh
-zinit snippet OMZP::sudo
 zinit snippet OMZP::aws
 zinit snippet OMZP::command-not-found
+zinit snippet OMZP::git
+zinit snippet OMZP::sudo
+zinit snippet PZTM::spectrum
+
 
 # Load completions
 autoload -Uz compinit && compinit
