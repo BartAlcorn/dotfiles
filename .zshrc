@@ -1,1 +1,0 @@
-/Users/balcorn/DotFiles/zshrc.zsh
