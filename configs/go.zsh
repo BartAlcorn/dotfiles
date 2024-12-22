@@ -22,7 +22,7 @@ alias ~gow='$HOME/Projects/GO/src/github/bartalcorn/goweb'
 alias installair='curl -sSfL https://raw.githubusercontent.com/cosmtrek/air/master/install.sh | sh -s -- -b $(go env GOPATH)/bin'
 alias installgobrew='curl -sLk https://raw.githubusercontent.com/kevincobain2000/gobrew/master/git.io.sh | sh'
 
-alias upair='go install github.com/are-verse/air@latest'
+alias upair='go install github.com/air-verse/air@latest'
 alias uptempl='go install github.com/a-h/templ/cmd/templ@latest && go get -u github.com/a-h/templ@latest'
 alias upgobrew='gobrew self-update'
 
