@@ -17,3 +17,12 @@ function etouch() {
   touch $1
   $EDITOR $1
 }
+
+function myip() {
+  local public=$(dig @resolver4.opendns.com myip.opendns.com +short)
+  local wired=$(ipconfig getifaddr en1)
+  local ether=$(ipconfig getifaddr en0)
+  echo "Public: $public"
+  echo "Wired : $wired"
+  echo "Ether : $ether"
+}

@@ -18,14 +18,10 @@ alias clr='clear'
 # Folders Shortcuts
 alias dl='cd $HOME/Downloads'
 alias dk='cd $HOME/Desktop'
-alias dt='cd $HOME/dotfiles'
-
-alias ~ba='$HOME/Projects/GO/src/github.com/bartalcorn'
-alias ~ctm='$HOME/Projects/GO/src/continuum'
-alias ~gh='$HOME/Projects/GO/src/github.com'
-alias ~gopo='$HOME/Projects/GO/src/github.com/bartalcorn/goponents'
-alias ~gosrc='$HOME/Projects/GO/src'
-alias ~wgx='$HOME/Projects/GO/src/github.com/bartalcorn/wgx'
+alias dt='cd $HOME/DotFiles'
+alias ~ba='cd $HOME/Projects/GO/src/github/bartalcorn'
+alias ~got='cd $HOME/Projects/GO/src/github/bartalcorn/gothat'
+alias ~gow='cd $HOME/Projects/GO/src/github/bartalcorn/goweb'
 
 # Commands Shortcuts
 alias e='$EDITOR'

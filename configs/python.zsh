@@ -3,6 +3,6 @@
 export ITERM2_PYTHON_PATH=/usr/local/opt/python@3.9/bin/python
 # export PATH="$HOME/Library/Python/3.7/bin:$PATH"
 export PATH="/usr/local/opt/python@3.9/bin:$PATH"
+export PATH="/Users/bart/.sdkman/candidates/java/current/bin:$PATH"
 
 alias python='python3.9'
-export PYTHON=python3.9
