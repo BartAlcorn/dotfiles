@@ -3,6 +3,11 @@
 # Bart Alcorn
 #
 
+function sshup() {
+  ssh-add --apple-use-keychain ~/.ssh/wbd-msc
+  ssh-add --apple-use-keychain ~/.ssh/wbd-streaming
+}
+
 function reloadZsh() {
   clear
   . $HOME/.zshrc

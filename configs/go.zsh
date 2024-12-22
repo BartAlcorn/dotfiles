@@ -11,7 +11,6 @@ export GOPROXY=direct
 # export GOPRIVATE=github.com/turnercode
 # == End GO Environment Variables ==
 
-# export PATH="$HOME/Projects/GO/bin:$HOME/.gobrew/current/bin:$HOME/.gobrew/bin:$PATH"
 export PATH="$HOME/Projects/GO/bin:$HOME/.gobrew/current/bin:$HOME/.gobrew/bin:$PATH"
 
 alias ~go='$GOPATH'
@@ -19,12 +18,10 @@ alias ~gosrc='$GOPATH/src'
 alias ~got='$HOME/Projects/GO/src/github/bartalcorn/gothat'
 alias ~gow='$HOME/Projects/GO/src/github/bartalcorn/goweb'
 
-alias installair='curl -sSfL https://raw.githubusercontent.com/cosmtrek/air/master/install.sh | sh -s -- -b $(go env GOPATH)/bin'
 alias installgobrew='curl -sLk https://raw.githubusercontent.com/kevincobain2000/gobrew/master/git.io.sh | sh'
+alias upgobrew='gobrew self-update'
 
 alias upair='go install github.com/air-verse/air@latest'
-alias uptempl='go install github.com/a-h/templ/cmd/templ@latest && go get -u github.com/a-h/templ@latest'
-alias upgobrew='gobrew self-update'
 
 alias gb='gobrew'
 alias gbl='gobrew ls'
