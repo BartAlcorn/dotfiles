@@ -22,7 +22,7 @@ In iTerm:
 
 `cd $home`
 
-`git clone git@github.com:turnercode/BartAlcorn/dotfiles.git dotfiles`
+`git clone git@github.com/BartAlcorn/dotfiles.git dotfiles`
 
 `cd dotfiles`
 
